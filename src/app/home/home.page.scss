@@ -1,0 +1,133 @@
+.home-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.characters {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 0px;
+}
+
+.character {
+    max-width: 230px;
+    max-height: 700px;
+}
+
+.buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+}
+
+@keyframes slideInLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .custom-button {
+    --border-radius: 20px;
+    --background: #fff;
+    --color: #000;
+    --padding-start: 5px;
+    --padding-end: 5px;
+    --padding-top: 5px;
+    --padding-bottom: 5px;
+    --inner-padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    animation: slideInLeft 1s ease-in-out;
+    animation-delay: var(--animation-delay);
+    animation-fill-mode: both;
+  }
+  
+
+.button1 {
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 500px;
+}
+
+.button2 {
+    margin-bottom: 40px;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+
+.button3 {
+    margin-bottom: 40px;
+    margin-left: 500px;
+    margin-right: 40px;
+}
+
+.footer-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #000;
+}
+
+ion-header {
+    ion-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .title-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 500px;
+        width: 100%;
+    }
+
+    img.logo {
+        width: 65px;
+        height: 65px;
+        margin-right: -750px;
+    }
+
+    ion-title {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+}

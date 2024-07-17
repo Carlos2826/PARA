@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="title-container">
+      <img src="assets/img/logo.png" alt="Logo" class="logo" />
+      <ion-title>
+        Preparación Ante Riesgo<br>y Amenazas
+      </ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToInicioSesion()">
+        <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ranking.png" alt="Ranking" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="home-container">
+    <img src="assets/img/fondo.jpg" class="background-image" />
+    <div class="characters">
+      <img src="assets/img/aqua rana.png" class="character aqua" />
+      <img src="assets/img/terra armadillo.png" class="character terra" />
+    </div>
+    <div class="buttons">
+      <ion-button expand="block" class="custom-button button1" style="--animation-delay: 0.2s;" (click)="navigateToSeleccionTema()">
+        <ion-icon slot="start" name="alert-outline"></ion-icon>
+        Prevenciones
+      </ion-button>      
+      <ion-button expand="block" class="custom-button button2" style="--animation-delay: 0.4s;">
+        <ion-icon slot="start" name="game-controller-outline"></ion-icon>
+        Juego
+      </ion-button>
+      <ion-button expand="block" class="custom-button button3" style="--animation-delay: 0.6s;">
+        <ion-icon slot="start" name="settings-outline"></ion-icon>
+        Opciones
+      </ion-button>
+    </div>
+  </div>
+  <div class="footer-bar"></div>
+</ion-content>
