@@ -42,43 +42,4 @@
     </div>
   </div>
   <div class="footer-bar"></div>
-
-  <!-- Alertas y confirmaciones -->
-  <ion-alert
-    [isOpen]="isAlertOpen"
-    onDidDismiss="isAlertOpen = false"
-    header="Error"
-    message="{{ alertMessage }}"
-    buttons="['OK']"
-  ></ion-alert>
-
-  <ion-alert
-    [isOpen]="isConfirmOpen"
-    onDidDismiss="isConfirmOpen = false"
-    header="Confirmación de Registro"
-    message="¿Confirmar registro con los siguientes datos?<br><br>Nombre: {{ nombre }}<br>Apellido: {{ apellido }}<br>Nombre de Usuario: {{ nombreUsuario }}"
-    buttons="[
-      {
-        text: 'No',
-        role: 'cancel',
-        handler: () => {
-          isConfirmOpen = false;
-        }
-      },
-      {
-        text: 'Sí',
-        handler: () => {
-          registrarUsuario();
-        }
-      }
-    ]"
-  ></ion-alert>
-
-  <ion-alert
-    [isOpen]="isSuccessOpen"
-    onDidDismiss="isSuccessOpen = false"
-    header="Registro Exitoso"
-    message="<ion-icon name='checkmark-circle-outline' style='color: green; font-size: 2rem;'></ion-icon><br><br>Registro exitoso"
-    buttons="['OK']"
-  ></ion-alert>
 </ion-content>

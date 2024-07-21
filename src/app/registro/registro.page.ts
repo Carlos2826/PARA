@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { NavigationService } from '../servicios/navigation.service';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -17,7 +18,11 @@ export class RegistroPage {
   isConfirmOpen: boolean = false;
   isSuccessOpen: boolean = false;
 
-  constructor(private navCtrl: NavController, private navigationService: NavigationService) {}
+  constructor(
+    private navCtrl: NavController,
+    private navigationService: NavigationService,
+    private authService: AuthService
+  ) {}
 
   goBack() {
     this.navCtrl.back();
@@ -28,8 +33,32 @@ export class RegistroPage {
       this.alertMessage = 'Todos los campos son obligatorios.';
       this.isAlertOpen = true;
     } else {
-      this.isConfirmOpen = true;
+      this.confirmarRegistro();
     }
+  }
+
+  confirmarRegistro() {
+    const alert = document.createElement('ion-alert');
+    alert.header = 'Confirmación de Registro';
+    alert.message = `¿Confirmar registro con los siguientes datos?<br><br>Nombre: ${this.nombre}<br>Apellido: ${this.apellido}<br>Nombre de Usuario: ${this.nombreUsuario}`;
+    alert.buttons = [
+      {
+        text: 'No',
+        role: 'cancel',
+        handler: () => {
+          this.isConfirmOpen = false;
+        }
+      },
+      {
+        text: 'Sí',
+        handler: () => {
+          this.registrarUsuario();
+        }
+      }
+    ];
+
+    document.body.appendChild(alert);
+    alert.present();
   }
 
   registrarUsuario() {
@@ -40,11 +69,24 @@ export class RegistroPage {
       apellido: this.apellido
     };
 
-    localStorage.setItem('user', JSON.stringify(user));
-    this.isConfirmOpen = false;
-    this.isSuccessOpen = true;
-    setTimeout(() => {
-      this.navigationService.goBackToPreviousPage();
-    }, 1500);
+    this.authService.register(user);
+    this.mostrarRegistroExitoso();
+  }
+
+  mostrarRegistroExitoso() {
+    const alert = document.createElement('ion-alert');
+    alert.header = 'Registro Exitoso';
+    alert.message = '<ion-icon name="checkmark-circle-outline" style="color: green; font-size: 2rem;"></ion-icon><br><br>Registro exitoso';
+    alert.buttons = [
+      {
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.navigateRoot('/inicio-sesion');
+        }
+      }
+    ];
+
+    document.body.appendChild(alert);
+    alert.present();
   }
 }
