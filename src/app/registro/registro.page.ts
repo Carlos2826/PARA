@@ -62,31 +62,11 @@ export class RegistroPage {
   }
 
   registrarUsuario() {
-    const user = {
+    this.authService.register({
       username: this.nombreUsuario,
-      password: this.contrasena,
-      nombre: this.nombre,
-      apellido: this.apellido
-    };
-
-    this.authService.register(user);
-    this.mostrarRegistroExitoso();
-  }
-
-  mostrarRegistroExitoso() {
-    const alert = document.createElement('ion-alert');
-    alert.header = 'Registro Exitoso';
-    alert.message = '<ion-icon name="checkmark-circle-outline" style="color: green; font-size: 2rem;"></ion-icon><br><br>Registro exitoso';
-    alert.buttons = [
-      {
-        text: 'OK',
-        handler: () => {
-          this.navCtrl.navigateRoot('/inicio-sesion');
-        }
-      }
-    ];
-
-    document.body.appendChild(alert);
-    alert.present();
+      password: this.contrasena
+    });
+    alert('Registro exitoso.');
+    this.navCtrl.navigateBack(this.navigationService.getPreviousUrl());
   }
 }
