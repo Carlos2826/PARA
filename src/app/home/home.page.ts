@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { NavigationService } from '../servicios/navigation.service';
 import { AuthService } from '../servicios/auth.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,14 @@ import { AuthService } from '../servicios/auth.service';
 })
 export class HomePage implements OnInit {
   username: string | null = null;
+  currentUser: User | null = null;
   isAdmin: boolean = false;
 
   constructor(
     private navCtrl: NavController,
     private navigationService: NavigationService,
-    public authService: AuthService
+    private menuCtrl: MenuController,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -27,9 +30,9 @@ export class HomePage implements OnInit {
   }
 
   updateUserInfo() {
-    const currentUser = this.authService.getCurrentUser();
-    this.username = currentUser?.username || null;
-    this.isAdmin = currentUser?.role === 'admin' || false;
+    this.currentUser = this.authService.getCurrentUser();
+    this.username = this.currentUser?.username || null;
+    this.isAdmin = this.currentUser?.role === 'admin' || false;
   }
 
   goHome() {
@@ -78,6 +81,7 @@ export class HomePage implements OnInit {
     this.username = null;
     this.isAdmin = false;
     this.navCtrl.navigateForward('/home');
+    this.menuCtrl.close();
   }
 
   editarPerfil() {
@@ -90,5 +94,10 @@ export class HomePage implements OnInit {
 
   configuracionAdmin() {
     // Lógica para la configuración de administrador
+  }
+
+  openMenu() {
+    this.menuCtrl.enable(true, 'custom-menu');
+    this.menuCtrl.open('custom-menu');
   }
 }
