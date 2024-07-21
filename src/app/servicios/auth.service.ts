@@ -15,8 +15,8 @@ export class AuthService {
       this.register({
         username: 'PARA',
         password: '12345',
-        nombre: 'Admin',
-        apellido: 'User',
+        nombre: 'P.A.R.A.',
+        apellido: 'Proteger',
         role: 'admin'
       });
     }
@@ -24,7 +24,7 @@ export class AuthService {
 
   register(user: User) {
     const users = this.getUsers();
-    const hashedPassword = bcrypt.hashSync(user.password, 10);
+    const hashedPassword = bcrypt.hashSync(user.password || '', 10);
     user.password = hashedPassword;
     users.push(user);
     localStorage.setItem(this.usersKey, JSON.stringify(users));
@@ -33,7 +33,7 @@ export class AuthService {
   login(username: string, password: string): boolean {
     const users = this.getUsers();
     const user = users.find(u => u.username === username);
-    if (user && bcrypt.compareSync(password, user.password)) {
+    if (user && bcrypt.compareSync(password, user.password || '')) {
       localStorage.setItem(this.currentUserKey, JSON.stringify(user));
       return true;
     }
