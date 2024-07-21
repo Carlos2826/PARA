@@ -5,6 +5,28 @@ ion-content {
     align-items: center;
     height: 100vh;
   }
+
+  ion-title {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: center;
+    flex: 1;
+  }
+
+  .back-icon {
+    width: 30px;
+    height: auto;
+  }
+  
+  .footer-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #000;
+  }
   
   .options-container {
     position: relative;
@@ -115,5 +137,9 @@ ion-content {
     --handle-size: 12px; /* Tamaño del mango */
     width: 100%; /* Ancho de la barra */
     margin: 0 0.5rem; /* Margen alrededor de la barra */
+    
+  }
+  ion-item ion-label {
+    color: #000000; /* Cambia este color al que desees */
   }
   
