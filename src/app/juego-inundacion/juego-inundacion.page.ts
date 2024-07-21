@@ -26,6 +26,10 @@ export class JuegoInundacionPage implements OnInit {
     this.navCtrl.navigateForward('/inicio-sesion');
   }
 
+  navigateToJuegoInundacion(nivel: number): void {
+    const targetPage = `/nivel${nivel}-inundacion`;
+    this.triggerTransition('water-transition', targetPage);
+  }
 
   triggerTransition(animationClass: string, targetPage: string): void {
     const transitionElement = document.createElement('div');

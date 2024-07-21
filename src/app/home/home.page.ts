@@ -40,6 +40,11 @@ export class HomePage {
     this.triggerIconHeartbeat('ranking-outline', '/ranking-global');
   }
 
+  navigateToAyuda() {
+    this.navCtrl.navigateForward('/ayuda');
+  }
+
+
   triggerIconHeartbeat(iconName: string, targetPage: string) {
     const iconElement = document.createElement('ion-icon');
     iconElement.name = iconName;
