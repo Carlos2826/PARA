@@ -145,7 +145,7 @@ const routes: Routes = [
   },
   {
     path: 'opciones',
-    loadChildren: () => import('./opciones/opciones.module').then( m => m.OpcionesPageModule)
+    loadChildren: () => import('./opciones/opciones.module').then(m => m.OpcionesPageModule)
   },
 
 ];
