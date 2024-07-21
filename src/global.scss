@@ -150,3 +150,69 @@ ion-header {
     height: 30px;
   }
 }
+
+/* Animaciones globales */
+@keyframes water-rise {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes earth-fall {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.water-transition {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/img/water.png') no-repeat center center/cover;
+  z-index: 1000;
+  animation: water-rise 2s forwards;
+}
+
+.earth-transition {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/img/earth.png') no-repeat center center/cover;
+  z-index: 1000;
+  animation: earth-fall 2s forwards;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5); /* Ajusta el valor de escala para un latido más pronunciado */
+    opacity: 0.5; /* Más transparente */
+  }
+}
+
+.icon-heartbeat {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  font-size: 150px; /* Ajusta el tamaño del ícono para que sea más visible */
+  color: #000; /* Color del ícono */
+  animation: heartbeat 2.5s ease-in-out; /* Más lento */
+  animation-iteration-count: 1; /* Lata una sola vez */
+}
+
+
