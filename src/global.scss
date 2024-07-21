@@ -1,13 +1,4 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/* src/global.scss */
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
@@ -24,17 +15,6 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
-
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
 
 /* Custom styles for the app */
 .home-container {
@@ -188,8 +168,8 @@ ion-header {
     opacity: 0;
   }
   50% {
-    transform: scale(1.5); /* Ajusta el valor de escala para un latido más pronunciado */
-    opacity: 0.5; /* Más transparente */
+    transform: scale(1.5);
+    opacity: 0.5;
   }
 }
 
@@ -199,26 +179,17 @@ ion-header {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  font-size: 150px; /* Ajusta el tamaño del ícono para que sea más visible */
-  color: #000; /* Color del ícono */
-  animation: heartbeat 2.5s ease-in-out; /* Más lento */
-  animation-iteration-count: 1; /* Lata una sola vez */
+  font-size: 150px;
+  color: #000;
+  animation: heartbeat 2.5s ease-in-out;
+  animation-iteration-count: 1;
 }
 
-// Estilos personalizados para ion-item
-ion-item {
-  --background: #f0f0f0; // Color de fondo
-  --color: #333333;      // Color del texto
-  margin-bottom: 10px;   // Margen inferior
-}
+// Importar las variables personalizadas
+@import 'variables';
 
-// Estilos personalizados para ion-label
-ion-label {
-  --color: #333333;      // Color del texto
-}
-
-// Estilos personalizados para ion-input
-ion-input {
-  --background: #ffffff; // Color de fondo
-  --color: #333333;      // Color del texto
+/* Estilos para toolbar negro */
+.black-toolbar {
+  --background: #000 !important;
+  --color: #fff !important; /* Opcional, para el color del texto */
 }
