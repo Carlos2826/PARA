@@ -44,7 +44,6 @@ export class HomePage {
     this.navCtrl.navigateForward('/ayuda');
   }
 
-
   triggerIconHeartbeat(iconName: string, targetPage: string) {
     const iconElement = document.createElement('ion-icon');
     iconElement.name = iconName;
