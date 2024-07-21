@@ -8,16 +8,16 @@ $ion-input-background: #ffffff; // Color de fondo del input
 $ion-input-color: #333333;     // Color del texto del input
 
 // Aplicar las variables
-.ion-item {
+ion-item {
   --background: $ion-item-background;
   --color: $ion-item-color;
 }
 
-.ion-label {
+ion-label {
   --color: $ion-label-color;
 }
 
-.ion-input {
+ion-input {
   --background: $ion-input-background;
   --color: $ion-input-color;
 }

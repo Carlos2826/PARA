@@ -142,7 +142,8 @@ const routes: Routes = [
   {
     path: 'eliminar-contenido',
     loadChildren: () => import('./eliminar-contenido/eliminar-contenido.module').then( m => m.EliminarContenidoPageModule)
-  },  {
+  },
+  {
     path: 'opciones',
     loadChildren: () => import('./opciones/opciones.module').then( m => m.OpcionesPageModule)
   },
