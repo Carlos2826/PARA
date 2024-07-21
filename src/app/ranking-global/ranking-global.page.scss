@@ -1,0 +1,126 @@
+.ranking-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .title-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  
+  .logo {
+    width: 10%;
+    height: 10%;
+    margin-right: 10px;
+  }
+  
+  .title-text h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #000;
+  }
+  
+  .title-text h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #000;
+  }
+  
+  .ranking-table {
+    margin-top: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+  }
+  
+  .ranking-table th, .ranking-table td {
+    border: 2px solid #000; /* Grosor del borde aumentado */
+    padding: 10px;
+    text-align: center;
+    color: #000; /* Color del texto cambiado a negro */
+  }
+  
+  .ranking-table th {
+    background-color: #ddd;
+  }
+  
+  .footer-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5%;
+    background: #000;
+  }
+  
+  ion-header {
+    ion-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+  
+    ion-title {
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+  
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .back-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5%;
+    height: auto;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.5; /* Hacer las flechas parcialmente transparentes */
+  }
+  
+  .carousel-nav.left {
+    left: 10px;
+  }
+  
+  .carousel-nav.right {
+    right: 10px;
+  }
+  
+  .carousel-nav:hover {
+    opacity: 1; /* Hacer las flechas completamente visibles al pasar el ratón por encima */
+  }
+  
+  .nav-icon {
+    width: 100%;
+    height: auto;
+  }
+  

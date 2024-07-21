@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { NavigationService } from '../servicios/navigation.service';
 
 @Component({
   selector: 'app-seleccion-leccion-inundacion',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeleccionLeccionInundacionPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController, private navigationService: NavigationService) { }
 
   ngOnInit() {
   }
 
+  goHome() {
+    this.navigationService.goHome();
+  }
+
+  goBack() {
+    this.navCtrl.back();
+  }
+
+  navigateToInicioSesion() {
+    this.navCtrl.navigateForward('/inicio-sesion');
+  }
+
+  navigateToPrevencionInundacion() {
+    this.navCtrl.navigateForward('/prevencion-inundacion');
+  }
+
+  navigateToDecisionInundacion() {
+    this.navCtrl.navigateForward('/decision-durante-inundacion');
+  }
+
+  navigateToReconocimientoInundacion() {
+    this.navCtrl.navigateForward('/reconocimiento-potenciales-inundacion');
+  }
 }

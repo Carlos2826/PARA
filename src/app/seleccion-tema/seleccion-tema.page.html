@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
+      </ion-button>
+    </ion-buttons>
     <div class="title-container">
-      <img src="assets/img/logo.png" alt="Logo" class="logo" />
+      <img src="assets/img/logo.png" alt="Logo" class="logo" (click)="goHome()" />
       <ion-title>
         Preparación Ante Riesgo<br>y Amenazas
       </ion-title>
     </div>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="navigateToInicioSesion()">
         <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
       </ion-button>
       <ion-button>
@@ -25,18 +30,18 @@
     <img src="assets/img/fondo.jpg" class="background-image" />
     <h1>Selección de Tema</h1>
     <div class="buttons">
-      <ion-button expand="block" class="custom-button button1">
+      <ion-button expand="block" class="custom-button button1" (click)="navigateToSeleccionLeccionInundacion()">
         <img src="assets/img/agua.png" alt="Inundación" class="button-icon">
         Inundación
       </ion-button>
-      <ion-button expand="block" class="custom-button button2">
+      <ion-button expand="block" class="custom-button button2" (click)="navigateToSeleccionLeccionDeslizamiento()">
+        Deslizamiento <br>de Tierra
         <img src="assets/img/tierra.png" alt="Deslizamiento" class="button-icon">
-        Deslizamiento de Tierra
       </ion-button>
     </div>
     <div class="characters">
-      <img src="assets/img/aqua rana.png" class="character aqua" />
-      <img src="assets/img/terra armadillo.png" class="character terra" />
+      <img src="assets/img/rana fondo.png" class="character aqua" />
+      <img src="assets/img/armadillo fondo.png" class="character terra" />
     </div>
   </div>
   <div class="footer-bar"></div>

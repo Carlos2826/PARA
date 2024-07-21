@@ -1,13 +1,55 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>SeleccionLeccionDeslizamiento</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
+      </ion-button>
+    </ion-buttons>
+    <div class="title-container">
+      <img src="assets/img/logo.png" alt="Logo" class="logo" (click)="goHome()" />
+      <ion-title>
+        Preparación Ante Riesgo<br>y Amenazas
+      </ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToInicioSesion()">
+        <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ranking.png" alt="Ranking" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">SeleccionLeccionDeslizamiento</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="seleccion-tema-container">
+    <img src="assets/img/fondo.jpg" class="background-image" />
+    <h1>Selección de Categoría</h1>
+    <div class="buttons-container">
+      <div class="button-column">
+        <div class="custom-button button1" (click)="navigateToPrevencionDeslizamiento()">
+          <img src="assets/img/icono de ayuda.png" alt="Prevención de Deslizamiento" class="button-icon">
+          <span>Prevención de Deslizamiento</span>
+        </div>
+      </div>
+      <div class="button-column">
+        <div class="custom-button button2" (click)="navigateToDecisionDeslizamiento()">
+          <img src="assets/img/icono de ayuda.png" alt="Decisión durante Deslizamiento" class="button-icon">
+          <span>Decisión durante Deslizamiento</span>
+        </div>
+      </div>
+      <div class="button-column">
+        <div class="custom-button button3" (click)="navigateToReconocimientoDeslizamiento()">
+          <img src="assets/img/icono de ayuda.png" alt="Reconocimiento de Potenciales Deslizamiento" class="button-icon">
+          <span>Reconocimiento de Potenciales Deslizamiento</span>
+        </div>
+      </div>
+    </div>
+    <img src="assets/img/armadillo fondo.png" alt="Armadillo" class="character armadillo-character">
+  </div>
+  <div class="footer-bar"></div>
 </ion-content>
