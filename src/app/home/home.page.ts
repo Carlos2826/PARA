@@ -85,15 +85,15 @@ export class HomePage implements OnInit {
   }
 
   editarPerfil() {
-    // Lógica para editar el perfil
+    this.navCtrl.navigateForward('/editar-perfil');
   }
 
   cambiarContrasena() {
-    // Lógica para cambiar la contraseña
+    this.navCtrl.navigateForward('/cambiar-contrasena');
   }
 
   configuracionAdmin() {
-    // Lógica para la configuración de administrador
+    this.navCtrl.navigateForward('/administracion');
   }
 
   openMenu() {
