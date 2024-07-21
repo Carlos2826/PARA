@@ -1,13 +1,72 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>JuegoInundacion</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
+      </ion-button>
+    </ion-buttons>
+    <div class="title-container">
+      <img src="assets/img/logo.png" alt="Logo" class="logo" (click)="goHome()" />
+      <ion-title>
+        Preparación Ante Riesgo<br>y Amenazas
+      </ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToInicioSesion()">
+        <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ranking.png" alt="Ranking" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">JuegoInundacion</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="level-selection-container">
+    <img src="assets/img/fondo.jpg" class="background-image" />
+    <h1>Selección de Nivel</h1>
+    <div class="characters">
+      <img src="assets/img/rana fondo.png" class="character aqua" />
+    </div>
+    <div class="level-box">
+      <div class="level-grid">
+        <ion-button class="level-button" (click)="navigateToJuegoInundacion(1)">
+          <img src="assets/img/lv-1-w.png" />
+        </ion-button>
+        <ion-button class="level-button" (click)="navigateToJuegoInundacion(2)">
+          <img src="assets/img/lv-2-w.png" />
+        </ion-button>
+        <ion-button class="level-button" (click)="navigateToJuegoInundacion(3)">
+          <img src="assets/img/lv-3-w.png" />
+        </ion-button>
+        <ion-button class="level-button">
+          <img src="assets/img/lv-blq-w.png" />
+        </ion-button>
+        <ion-button class="level-button">
+          <img src="assets/img/lv-blq-w.png" />
+        </ion-button>
+        <ion-button class="level-button">
+          <img src="assets/img/lv-blq-w.png" />
+        </ion-button>
+        <ion-button class="level-button">
+          <img src="assets/img/lv-blq-w.png" />
+        </ion-button>
+        <ion-button class="level-button">
+          <img src="assets/img/lv-blq-w.png" />
+        </ion-button>
+        <ion-button class="level-button">
+          <img src="assets/img/lv-blq-w.png" />
+        </ion-button>
+      </div>
+    </div>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-footer>

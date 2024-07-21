@@ -13,7 +13,7 @@
       <ion-button>
         <img src="assets/img/icono de ranking.png" alt="Ranking" class="icon">
       </ion-button>
-      <ion-button>
+      <ion-button (click)="navigateToAyuda()">
         <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
       </ion-button>
     </ion-buttons>
@@ -32,7 +32,7 @@
         <ion-icon slot="start" name="alert-outline"></ion-icon>
         Prevenciones
       </ion-button>      
-      <ion-button expand="block" class="custom-button button2" style="--animation-delay: 0.4s;">
+      <ion-button (click)="navigateToSeleccionJuego()" expand="block" class="custom-button button2" style="--animation-delay: 0.4s;">
         <ion-icon slot="start" name="game-controller-outline"></ion-icon>
         Juego
       </ion-button>

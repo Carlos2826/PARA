@@ -17,4 +17,12 @@ export class HomePage {
   navigateToSeleccionTema() {
     this.navCtrl.navigateForward('/seleccion-tema');
   }
+
+  navigateToAyuda() {
+    this.navCtrl.navigateForward('/ayuda');
+  }
+
+  navigateToSeleccionJuego() {
+    this.navCtrl.navigateForward('seleccion-juego');
+  }
 }

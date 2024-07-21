@@ -1,13 +1,56 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Nivel2Inundacion</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
+      </ion-button>
+    </ion-buttons>
+    <div class="header-container">
+      <div class="logo-title-container">
+        <img src="assets/img/logo.png" alt="Logo" class="logo" />
+        <ion-title>
+          Preparación Ante Riesgo<br>y Amenazas
+        </ion-title>
+      </div>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToInicioSesion()">
+        <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ranking.png" alt="Ranking" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Nivel2Inundacion</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="game-container">
+    <h2 class="sentence-title">Completa la oración:</h2>
+    <img src="assets/img/placeholder.png" alt="Image" class="sentence-image" />
+
+    <div class="sentence">
+      <span class="text-part">Esta es una </span>
+      <span class="blank" id="blank-1"></span>
+      <span class="text-part"> de prueba para </span>
+      <span class="blank" id="blank-2"></span>
+      <span class="text-part"> el juego.</span>
+    </div>
+
+    <div class="word-options">
+      <ion-button class="word-button">palabra1</ion-button>
+      <ion-button class="word-button">palabra2</ion-button>
+      <ion-button class="word-button">palabra3</ion-button>
+      <ion-button class="word-button">palabra4</ion-button>
+    </div>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-footer>
+

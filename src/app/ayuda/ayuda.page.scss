@@ -1,0 +1,226 @@
+/* Aplicar la fuente Open Sans a toda la página */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px; /* Tamaño de fuente para el cuerpo */
+  margin: 0;
+}
+
+/* Estilos para el ion-content con imagen de fondo */
+ion-content {
+  --background: url('/assets/img/fondo-ayuda.png') no-repeat center center / cover;
+}
+
+/* Estilos para el header */
+ion-header {
+  ion-toolbar {
+    ion-title {
+      text-align: center; 
+      font-weight: bold; 
+      margin-top: 5px; 
+      margin-bottom: 5px; 
+      font-size: 24px; /* Tamaño de fuente para el encabezado */
+    }
+  }
+}
+
+/* Estilos para el contenedor principal */
+.main-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Estilos para la caja vacía */
+.empty-box {
+  width: 50%;
+}
+
+/* Estilos para la caja de contenido */
+.content-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Estilos para el contenedor externo de la búsqueda */
+.search-container-wrapper {
+  width: 60%;
+  background-color: #ccc; 
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 2%;
+}
+
+/* Estilos para la caja de búsqueda */
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 5px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: white;
+  width: 100%;
+}
+
+.search-box ion-input {
+  flex: 1;
+  margin-right: 10px;
+  font-size: 10px; /* Tamaño de fuente para el texto de búsqueda */
+  color: black;
+}
+
+/* Estilos para el contenedor de preguntas */
+.questions-container {
+  width: 90%; /* Reducido en un 10% */
+  margin-top: 2%; 
+  background-color: #ccc; 
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Estilos para la lista de preguntas */
+.questions-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilos para cada envoltura de pregunta */
+.question-wrapper {
+  margin-bottom: 18px; /* Reducido en un 10% */
+}
+
+/* Estilos para cada pregunta */
+.question-item {
+  display: flex;
+  flex-direction: column;
+  padding: 9px; /* Reducido en un 10% */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 10px; /* Tamaño de fuente para el texto de la pregunta */
+  color: black;
+  margin-bottom: 9px; /* Reducido en un 10% */
+}
+
+/* Estilos para el encabezado de cada pregunta */
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4.5px; /* Reducido en un 10% */
+}
+
+/* Estilos para el texto de cada pregunta */
+.question-header span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Estilos para la caja de detalles de la pregunta */
+.question-details {
+  padding: 9px; /* Reducido en un 10% */
+  background-color: #ccc; 
+  border: 1px solid #ccc; 
+  border-radius: 0 0 8px 8px; 
+  font-size: 10px; /* Tamaño de fuente para el texto de los detalles */
+  color: black;
+  margin-top: 9px; /* Reducido en un 10% */
+}
+
+/* Estilos para el botón de mostrar/ocultar */
+.show-button {
+  --background: white; 
+  --color: #3880ff; 
+  font-weight: bold;
+  font-size: 10px; /* Tamaño de fuente del botón */
+}
+
+.hide-button {
+  --background: #3880ff; 
+  --color: white; 
+  font-weight: bold;
+  font-size: 10px; /* Tamaño de fuente del botón */
+}
+
+/* Estilos para el footer */
+ion-footer {
+  ion-toolbar {
+    ion-title {
+      text-align: center; 
+      font-size: 14px; 
+    }
+  }
+}
+
+/* Estilos para el contenedor del logo y textos */
+.logo-container {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para el logo */
+.logo {
+  width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+  height: auto;
+  margin-bottom: 10px; /* Espacio entre el logo y los textos */
+}
+
+/* Estilos para el contenedor de textos */
+.text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para el texto "Ayuda" */
+.text-help {
+  font-weight: bold;
+  font-style: italic;
+  color: black;
+  font-size: 24px;
+}
+
+/* Estilos para el texto "Preguntas Frecuentes" */
+.text-faq {
+  font-size: 18px;
+  color: black;
+}
+
+/* Estilos para el contenedor de la imagen del operador y los textos */
+.operator-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para la imagen del operador */
+.operator-image {
+  width: 50px; /* Ajusta el tamaño del operador según sea necesario */
+  height: auto;
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+/* Estilos para los textos del operador */
+.operator-texts {
+  display: flex;
+  color: black;
+  flex-direction: column;
+}
+
+/* Estilos para el texto de la pregunta del operador */
+.operator-question {
+  font-size: 14px;
+  color: black;
+}
+
+/* Estilos para el texto de contacto del operador */
+.operator-contact {
+  font-size: 14px;
+  color: black;
+  margin-top: 5px;
+}
+
