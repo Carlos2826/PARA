@@ -14,7 +14,7 @@ export class NavigationService {
   }
 
   getPreviousUrl(): string {
-    return this.previousUrl;
+    return this.previousUrl || '/home';
   }
 
   goBackToPreviousPage() {
@@ -29,5 +29,3 @@ export class NavigationService {
     this.navCtrl.navigateRoot('/home');
   }
 }
-
-

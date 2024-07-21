@@ -23,6 +23,7 @@ export class SeleccionTemaPage implements OnInit {
   }
 
   navigateToInicioSesion() {
+    this.navigationService.setPreviousUrl('/seleccion-tema'); // Guarda la URL actual
     this.navCtrl.navigateForward('/inicio-sesion');
   }
 

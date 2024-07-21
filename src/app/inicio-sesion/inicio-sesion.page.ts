@@ -27,6 +27,7 @@ export class InicioSesionPage implements OnInit {
   login() {
     if (this.authService.login(this.username, this.password)) {
       alert('Inicio de sesión exitoso.');
+      localStorage.setItem('username', this.username); // Guardar nombre de usuario
       this.navCtrl.navigateBack(this.navigationService.getPreviousUrl());
     } else {
       alert('Nombre de usuario o contraseña incorrectos.');
