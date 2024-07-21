@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,16 +6,16 @@ import { NavController } from '@ionic/angular';
   templateUrl: './opciones.page.html',
   styleUrls: ['./opciones.page.scss'],
 })
-export class OpcionesPage implements OnInit {
+export class OpcionesPage implements OnInit, OnDestroy {
 
   settings = {
     music: false,
+    musicVolume: 0, // Valor inicial del volumen de música
     sound: false,
+    soundVolume: 0, // Valor inicial del volumen de efectos de sonido
     notifications: false,
     darkMode: false
   };
-
-  originalSettings = { ...this.settings };
 
   constructor(private navCtrl: NavController) { }
 
@@ -28,7 +28,15 @@ export class OpcionesPage implements OnInit {
   }
 
   resetChanges() {
-    this.settings = { ...this.originalSettings };
+    this.settings = {
+      music: false,
+      musicVolume: 0, // Restablecer el volumen de música a 0
+      sound: false,
+      soundVolume: 0, // Restablecer el volumen de efectos de sonido a 0
+      notifications: false,
+      darkMode: false
+    };
+    this.saveSettings(); // Guardar los ajustes restablecidos
   }
 
   openAccountSettings() {
@@ -40,7 +48,6 @@ export class OpcionesPage implements OnInit {
     const savedSettings = localStorage.getItem('app-settings');
     if (savedSettings) {
       this.settings = JSON.parse(savedSettings);
-      this.originalSettings = { ...this.settings };
     }
   }
 
@@ -49,6 +56,10 @@ export class OpcionesPage implements OnInit {
   }
 
   ngOnDestroy() {
+    this.saveSettings();
+  }
+
+  onSettingChange() {
     this.saveSettings();
   }
 }

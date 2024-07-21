@@ -16,26 +16,32 @@
       <ion-card-header class="options-header">
         <ion-img src="assets/img/logo.png" class="logo"></ion-img>
         <ion-card-title>Opciones</ion-card-title>
-        <ion-button fill="outline" class="undo-button">Deshacer cambios</ion-button>
+        <ion-button fill="outline" class="undo-button" (click)="resetChanges()">Deshacer cambios</ion-button>
       </ion-card-header>
       <ion-card-content>
-        <ion-item>
+        <ion-item lines="none" class="item-with-range">
           <ion-label>Música ambiental</ion-label>
-          <ion-toggle slot="end"></ion-toggle>
+          <ion-toggle slot="start" [(ngModel)]="settings.music" (ionChange)="onSettingChange()"></ion-toggle>
+          <div class="range-container">
+            <ion-range [(ngModel)]="settings.musicVolume" (ionChange)="onSettingChange()"></ion-range>
+          </div>
         </ion-item>
-        <ion-item>
+        <ion-item lines="none" class="item-with-range">
           <ion-label>Efectos de sonido</ion-label>
-          <ion-toggle slot="end"></ion-toggle>
+          <ion-toggle slot="start" [(ngModel)]="settings.sound" (ionChange)="onSettingChange()"></ion-toggle>
+          <div class="range-container">
+            <ion-range [(ngModel)]="settings.soundVolume" (ionChange)="onSettingChange()"></ion-range>
+          </div>
         </ion-item>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label>Notificaciones</ion-label>
-          <ion-toggle slot="end"></ion-toggle>
+          <ion-toggle slot="end" [(ngModel)]="settings.notifications" (ionChange)="onSettingChange()"></ion-toggle>
         </ion-item>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label>Modo oscuro</ion-label>
-          <ion-toggle slot="end"></ion-toggle>
+          <ion-toggle slot="end" [(ngModel)]="settings.darkMode" (ionChange)="onSettingChange()"></ion-toggle>
         </ion-item>
-        <ion-button expand="full" class="account-settings">Configuración de cuenta</ion-button>
+        <ion-button expand="full" class="account-settings" (click)="openAccountSettings()">Configuración de cuenta</ion-button>
       </ion-card-content>
     </ion-card>
   </div>
