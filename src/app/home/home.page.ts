@@ -1,19 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { NavigationService } from '../servicios/navigation.service';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   username: string | null = null;
+  isAdmin: boolean = false;
 
-  constructor(private navCtrl: NavController, private navigationService: NavigationService) {}
+  constructor(
+    private navCtrl: NavController,
+    private navigationService: NavigationService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit() {
-    this.username = localStorage.getItem('username');
+    this.updateUserInfo();
+  }
+
+  ionViewWillEnter() {
+    this.updateUserInfo();
+  }
+
+  updateUserInfo() {
+    const currentUser = this.authService.getCurrentUser();
+    this.username = currentUser?.username || null;
+    this.isAdmin = currentUser?.role === 'admin' || false;
   }
 
   goHome() {
@@ -58,8 +74,21 @@ export class HomePage {
   }
 
   logout() {
-    localStorage.removeItem('username');
+    this.authService.logout();
     this.username = null;
+    this.isAdmin = false;
     this.navCtrl.navigateForward('/home');
+  }
+
+  editarPerfil() {
+    // Lógica para editar el perfil
+  }
+
+  cambiarContrasena() {
+    // Lógica para cambiar la contraseña
+  }
+
+  configuracionAdmin() {
+    // Lógica para la configuración de administrador
   }
 }

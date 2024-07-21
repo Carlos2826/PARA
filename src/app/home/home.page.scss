@@ -141,3 +141,17 @@ ion-header {
   --background: #000 !important;
   --color: #fff !important; /* Opcional, para el color del texto */
 }
+
+ion-menu {
+  --width: 300px;
+}
+
+ion-button {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --border-radius: 10px;
+  --background: #ccc;
+  --color: #000;
+  margin: 10px 0;
+  text-align: left;
+}
