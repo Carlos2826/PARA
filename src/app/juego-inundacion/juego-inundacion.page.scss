@@ -4,143 +4,142 @@ html, body, ion-content {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background:black;
+  background: black;
 }
-  
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 5;
-  }
-  
-  ion-header {
-    ion-toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 0%;
-    }
-  
-    .title-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-  
-    img.logo {
-      width: 6.5%;
-      height: 6.5%;
-      margin-left: 43%;
-    }
-  
-    ion-title {
-      text-align: center;
-      font-size: 1.2rem;
-      line-height: 1.5;
-      margin-right: 30%;
-    }
-  
-    .icon, .back-icon {
-      width: 30px;
-      height: auto;
-    }
-  }
-  
-  .level-selection-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    overflow: hidden;
-  }
-  
-  h1 {
-    position: relative;
-    font-size: 2rem;
-    margin-top: 2%;
-    z-index: 1;
-    color: #000;
-  }
-  
-  .characters {
-    position: absolute;
-    top: 5%;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 5;
+}
+
+ion-header {
+  ion-toolbar {
     display: flex;
     justify-content: space-between;
-    width: 80%;
-    z-index: 5; /* Asegúrate de que los personajes estén detrás de los botones */
-  }
-  
-  .character {
-    max-width: 90%;
-    max-height: 100%;
-  }
-  
-  .aqua {
-    position: absolute;
-    right: 80%;
-    bottom: 10%;
-  }
-  
-  .level-box {
-    position: relative;
-    border: 2px solid #000; /* Borde negro intenso */
-    border-radius: 15px;
-    padding: 16px;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    background-color: transparent !important; /* Asegúrate de que el fondo sea transparente */
-    width: 60%; /* Ancho de la caja */
-    max-width: 600px; /* Máximo ancho de la caja */
-    max-height: 600px;
+    padding: 0 0%;
+  }
+
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  img.logo {
+    width: 6.5%;
+    height: 6.5%;
+    margin-left: 43%;
+  }
+
+  ion-title {
     text-align: center;
-    margin: 0 auto; /* Centrar horizontalmente */
-    z-index: 10;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-right: 30%;
   }
-  
-  .level-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    background-color: black;
-  }
-  
-  .level-button {
-    background-color: black;
-    border: none !important; /* Elimina el borde */
-    padding: 0 !important; /* Elimina cualquier padding */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .level-icon {
-    width: 200%; /* Ajusta el tamaño de las imágenes */
-    height: 200%; /* Ajusta el tamaño de las imágenes */
-    background-color: black;
-    border-radius: 50%;
-  }
-  
-  .level-button:hover {
-    transform: scale(1.1); /* Agrandamiento al pasar el cursor */
-    box-shadow: 0 0 10px rgb(0, 0, 0); /* Brillo verde agua */
-  }
-  
-  .back-icon {
+
+  .icon, .back-icon {
     width: 30px;
     height: auto;
   }
-  
+}
+
+.level-selection-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+h1 {
+  position: relative;
+  font-size: 2rem;
+  margin-top: 2%;
+  z-index: 1;
+  color: #000;
+}
+
+.characters {
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  z-index: 5;
+}
+
+.character {
+  max-width: 90%;
+  max-height: 100%;
+}
+
+.aqua {
+  position: absolute;
+  right: 80%;
+  bottom: 10%;
+}
+
+.level-box {
+  position: relative;
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: transparent !important;
+  width: 60%;
+  max-width: 600px;
+  max-height: 600px;
+  text-align: center;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: transparent;
+}
+
+.level-button {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.level-icon {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+}
+
+.level-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.back-icon {
+  width: 30px;
+  height: auto;
+}
+

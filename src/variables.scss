@@ -1,11 +1,13 @@
-// src/theme/variables.scss
-
 // Variables de color personalizadas
 $ion-item-background: #f0f0f0; // Color de fondo de los ítems
 $ion-item-color: #333333;      // Color del texto de los ítems
 $ion-label-color: #333333;     // Color del texto de las etiquetas
 $ion-input-background: #ffffff; // Color de fondo del input
 $ion-input-color: #333333;     // Color del texto del input
+
+// Variables de estilo para los botones de nivel
+$level-button-background: transparent !important;
+$level-button-border: none !important;
 
 // Aplicar las variables
 ion-item {
@@ -21,3 +23,9 @@ ion-input {
   --background: $ion-input-background;
   --color: $ion-input-color;
 }
+
+ion-button {
+  --background: $level-button-background;
+  --border: $level-button-border;
+}
+
