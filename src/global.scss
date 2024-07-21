@@ -161,35 +161,25 @@ ion-header {
   }
 }
 
-@keyframes earth-fall {
-  0% {
-    top: -100%;
-  }
-  100% {
-    top: 0;
-  }
-}
-
 .water-transition {
   position: fixed;
   bottom: -100%;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('assets/img/water.png') no-repeat center center/cover;
+  background: url('assets/img/gifagua.gif') no-repeat center center/cover;
   z-index: 1000;
   animation: water-rise 2s forwards;
 }
 
 .earth-transition {
   position: fixed;
-  top: -100%;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('assets/img/earth.png') no-repeat center center/cover;
+  background: url('assets/img/giftierra.gif') no-repeat center center/cover;
   z-index: 1000;
-  animation: earth-fall 2s forwards;
 }
 
 @keyframes heartbeat {
@@ -215,4 +205,20 @@ ion-header {
   animation-iteration-count: 1; /* Lata una sola vez */
 }
 
+// Estilos personalizados para ion-item
+ion-item {
+  --background: #f0f0f0; // Color de fondo
+  --color: #333333;      // Color del texto
+  margin-bottom: 10px;   // Margen inferior
+}
 
+// Estilos personalizados para ion-label
+ion-label {
+  --color: #333333;      // Color del texto
+}
+
+// Estilos personalizados para ion-input
+ion-input {
+  --background: #ffffff; // Color de fondo
+  --color: #333333;      // Color del texto
+}
