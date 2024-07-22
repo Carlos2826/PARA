@@ -6,12 +6,16 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService } from './servicios/auth.service';  // Importar el servicio
-import { MusicService } from './servicios/musica.service'; // Importar el servicio de música
+import { AuthService } from './servicios/auth.service';  // Importar el servicio AuthService
+import { MusicService } from './servicios/musica.service'; // Importar el servicio MusicService
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule
+  ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AuthService,  // Agregar AuthService a los proveedores
@@ -20,4 +24,3 @@ import { MusicService } from './servicios/musica.service'; // Importar el servic
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-

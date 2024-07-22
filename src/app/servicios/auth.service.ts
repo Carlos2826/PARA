@@ -1,104 +1,80 @@
 import { Injectable } from '@angular/core';
-import * as bcrypt from 'bcryptjs';
+import { Observable, from } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private usersKey = 'users';
-  private currentUserKey = 'currentUser';
+  private apiUrl = 'http://localhost:8105';  // Cambia esto si tu API está en otra URL
 
-  constructor() {
-    const users = this.getUsers();
-    if (!users.some(user => user.username === 'PARA')) {
-      this.register({
-        username: 'PARA',
-        password: '12345',
-        nombre: 'P.A.R.A.',
-        apellido: 'Proteger',
-        role: 'admin',
-        perfil: 'Administrador al solo lectura',
-        selected: false
-      }, false);
-    }
-    this.registerPredefinedUsers();
+  constructor() {}
+
+  login(username: string, password: string): Observable<any> {
+    return from(fetch(`${this.apiUrl}/account/${username}`)
+      .then(response => response.json()));
   }
 
-  registerPredefinedUsers() {
-    const predefinedUsers: User[] = [
-      {
-        username: 'Cristina',
-        password: '12345',
-        nombre: 'Cristina',
-        apellido: 'Agulló',
-        role: 'admin',
-        perfil: 'Administrador al solo lectura',
-        selected: false
+  register(user: User): Observable<any> {
+    return from(fetch(`${this.apiUrl}/user/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
       },
-      {
-        username: 'admin',
-        password: '12345',
-        nombre: 'admin',
-        apellido: 'campus',
-        role: 'admin',
-        perfil: 'Administrador',
-        selected: false
-      },
-      {
-        username: 'Usuario',
-        password: '12345',
-        nombre: 'Usuario',
-        apellido: 'Formación',
-        role: 'admin',
-        perfil: 'Administrador general',
-        selected: false
+      body: JSON.stringify(user)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    ];
+      return response.json();
+    })
+    .catch(error => {
+      console.error('Error en el servicio de registro:', error);
+      throw error;
+    }));
+  }
 
-    predefinedUsers.forEach(user => {
-      this.register(user, false);
+  updateUser(user: User): Observable<any> {
+    return from(fetch(`${this.apiUrl}/user/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    }).then(response => response.json()));
+  }
+
+  deleteUser(username: string): Observable<any> {
+    return from(fetch(`${this.apiUrl}/user/delete/${username}`)
+      .then(response => response.json()));
+  }
+
+  getCurrentUser(): Observable<User> {
+    const currentUser: User = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    return new Observable(observer => {
+      observer.next(currentUser);
+      observer.complete();
     });
   }
 
-  register(user: User, hashPassword: boolean = true) {
-    if (!user.username || !user.password || !user.nombre || !user.apellido || !user.perfil) {
-      console.error('Faltan campos requeridos para registrar el usuario:', user);
-      return;
-    }
-
-    const users = this.getUsers();
-    if (hashPassword) {
-      user.password = bcrypt.hashSync(user.password || '', 10);
-    }
-    users.push(user);
-    this.updateUsers(users);
+  getUsers(): Observable<User[]> {
+    return from(fetch(`${this.apiUrl}/users`)
+      .then(response => response.json()));
   }
 
-  updateUsers(users: User[]) {
-    localStorage.setItem(this.usersKey, JSON.stringify(users));
+  updateUsers(users: User[]): Observable<any> {
+    return from(fetch(`${this.apiUrl}/users/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(users)
+    }).then(response => response.json()));
   }
 
-  login(username: string, password: string): boolean {
-    const users = this.getUsers();
-    const user = users.find(u => u.username === username);
-    if (user && bcrypt.compareSync(password, user.password || '')) {
-      localStorage.setItem(this.currentUserKey, JSON.stringify(user));
-      return true;
-    }
-    return false;
-  }
-
-  getUsers(): User[] {
-    return JSON.parse(localStorage.getItem(this.usersKey) || '[]');
-  }
-
-  getCurrentUser(): User | null {
-    const userJson = localStorage.getItem(this.currentUserKey);
-    return userJson ? JSON.parse(userJson) : null;
-  }
-
-  logout() {
-    localStorage.removeItem(this.currentUserKey);
+  logout(): void {
+    localStorage.removeItem('currentUser');
   }
 }
+

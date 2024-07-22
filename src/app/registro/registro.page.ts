@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { NavigationService } from '../servicios/navigation.service';
-import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -18,10 +17,11 @@ export class RegistroPage {
   isConfirmOpen: boolean = false;
   isSuccessOpen: boolean = false;
 
+  private apiUrl = 'http://localhost:8105';  // URL de tu API
+
   constructor(
     private navCtrl: NavController,
-    private navigationService: NavigationService,
-    private authService: AuthService
+    private navigationService: NavigationService
   ) {}
 
   goBack() {
@@ -62,16 +62,33 @@ export class RegistroPage {
   }
 
   registrarUsuario() {
-    this.authService.register({
+    const newUser = {
       username: this.nombreUsuario,
       password: this.contrasena,
       nombre: this.nombre,
-      apellido: this.apellido,
-      role: 'user',
-      perfil: 'Usuario',
-      selected: false
+      apellido: this.apellido
+    };
+
+    fetch(`${this.apiUrl}/user/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert('Registro exitoso.');
+      this.navCtrl.navigateBack(this.navigationService.getPreviousUrl());
+    })
+    .catch(error => {
+      console.error('Error al registrar el usuario:', error);
+      alert('Ocurrió un error al registrar el usuario. Detalles: ' + error.message);
     });
-    alert('Registro exitoso.');
-    this.navCtrl.navigateBack(this.navigationService.getPreviousUrl());
   }
 }

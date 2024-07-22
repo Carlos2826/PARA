@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<Html>
+    <head>
+        <h1>Pruebas</h1>
+    </head>
+    <body>
+        <div>
+            <input type="text" id="Usuario" placeholder="Enter Username Here"><br><br>
+            <input type="password" id="Contraseña" placeholder="Enter Password Here"><br><br> 
+            <Button onclick="LlamarFetch()" type="button" id="Boton">Probar Funcion</Button><br>
+            <h1 id="TextoPrueba">Aqui aparecera el nombre del usuario, o los errores de ser necesario.</h1>
+        </div>
+    </body>
+
+</Html>
+
+<style>
+    h1 {text-align: center;}
+    div {text-align: center;}
+</style>
+
+<script>
+    const inputUs = document.getElementById("Usuario");
+    const inputCont = document.getElementById("Contraseña");
+    const H1Prueba = document.getElementById("TextoPrueba");
+
+    function LlamarFetch(){
+        if(inputUs.value == ''||inputCont.value==''){
+            H1Prueba.innerText="Por favor, introduzca todos los datos para iniciar sesion.";
+        }else{
+            const inputUsuario = inputUs.value;
+            const inputContraseña = inputCont.value;
+            InicioSesion(inputUsuario, inputContraseña);
+        } 
+    }
+    function InicioSesion(User, Password){
+        let a = User, b = Password;
+        const apiURL = 'http://localhost:8484/account/'+a;
+        fetch(apiURL)
+        .then (response => response.json())
+        .then (data => {
+        // Compara los datos introducidos del usuario para ver si la cuenta existe, si lo hace, compara tambien la contraseña.
+        let CuentExist = Object.keys(data).length;
+            if(parseInt(Object.keys(data).length)==0){
+                H1Prueba.innerText="Esta cuenta no existe.";
+            }else{
+                if(b==""){
+                    H1Prueba.innerText="Por favor, introduzca su contraseña e Intente de nuevo.";
+                }else if(b!=data[0].Contraseña){
+                    H1Prueba.innerText="Contraseña correcta, verifique e Intente de nuevo";
+                }else{
+                    H1Prueba.innerText="Bienvenido "+(data[0].Nombre);
+            }
+        }
+        })
+        .catch(error => {
+            console.error('Error al acceder a la API:', error);
+        });
+    
+    }
+</script>

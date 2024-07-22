@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { AuthService } from '../servicios/auth.service';
-import { User } from '../models/user.model';
+
+interface User {
+  ID: number;
+  nombre: string;
+  apellido: string;
+  username: string;
+  password: string;
+  admin: number;
+  selected?: boolean; // Añadimos esta propiedad temporalmente
+}
 
 @Component({
   selector: 'app-administracion',
@@ -9,52 +17,39 @@ import { User } from '../models/user.model';
   styleUrls: ['./administracion.page.scss'],
 })
 export class AdministracionPage implements OnInit {
+  currentUser: User = {
+    ID: 0,
+    nombre: '',
+    apellido: '',
+    username: '',
+    password: '',
+    admin: 0
+  };
   users: User[] = [];
-  currentUser: User | null = null;
 
-  constructor(private navCtrl: NavController, private authService: AuthService) { }
+  constructor(private navCtrl: NavController) {}
 
   ngOnInit() {
-    this.loadUsers();
+    this.getCurrentUser();
+    this.getUsers();
   }
 
-  loadUsers() {
-    this.currentUser = this.authService.getCurrentUser();
-    this.users = this.authService.getUsers().filter(user => user.nombre && user.apellido && user.username !== this.currentUser?.username);
+  getCurrentUser() {
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      this.currentUser = JSON.parse(user);
+    }
   }
 
-  addUser() {
-    const newUser: User = {
-      username: 'nuevoUsuario',
-      password: '12345',
-      nombre: 'Nuevo',
-      apellido: 'Usuario',
-      perfil: 'Usuario',
-      role: 'user',
-      selected: false
-    };
-    this.authService.register(newUser);
-    this.loadUsers();
+  getUsers() {
+    const users = localStorage.getItem('users');
+    if (users) {
+      this.users = JSON.parse(users).filter((user: User) => user.username !== this.currentUser.username);
+    }
   }
 
-  deleteUser(user: User) {
-    this.users = this.users.filter(u => u.username !== user.username);
-    this.authService.updateUsers(this.users);
-    this.loadUsers();
-  }
-
-  deleteSelectedUsers() {
-    this.users = this.users.filter(u => !u.selected);
-    this.authService.updateUsers(this.users);
-    this.loadUsers();
-  }
-
-  activateSelectedUsers() {
-    // Implementar lógica para activar usuarios seleccionados
-  }
-
-  deactivateSelectedUsers() {
-    // Implementar lógica para desactivar usuarios seleccionados
+  saveUsers() {
+    localStorage.setItem('users', JSON.stringify(this.users));
   }
 
   goBack() {
@@ -63,5 +58,47 @@ export class AdministracionPage implements OnInit {
 
   navigateToAyuda() {
     this.navCtrl.navigateForward('/ayuda');
+  }
+
+  addUser() {
+    // Lógica para añadir un nuevo usuario
+  }
+
+  deleteSelectedUsers() {
+    const selectedUsers = this.users.filter(user => user.selected);
+    selectedUsers.forEach(user => this.deleteUser(user));
+  }
+
+  activateSelectedUsers() {
+    const selectedUsers = this.users.filter(user => user.selected);
+    selectedUsers.forEach(user => {
+      user.admin = 1; // Activa el usuario
+      this.updateUser(user);
+    });
+  }
+
+  deactivateSelectedUsers() {
+    const selectedUsers = this.users.filter(user => user.selected);
+    selectedUsers.forEach(user => {
+      user.admin = 0; // Desactiva el usuario
+      this.updateUser(user);
+    });
+  }
+
+  editUser(user: User) {
+    // Lógica para editar un usuario
+  }
+
+  deleteUser(user: User) {
+    this.users = this.users.filter(u => u.username !== user.username);
+    this.saveUsers();
+  }
+
+  updateUser(user: User) {
+    const index = this.users.findIndex(u => u.username === user.username);
+    if (index !== -1) {
+      this.users[index] = user;
+      this.saveUsers();
+    }
   }
 }
