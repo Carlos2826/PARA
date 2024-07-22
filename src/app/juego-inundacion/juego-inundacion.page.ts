@@ -9,6 +9,21 @@ import { NavigationService } from '../servicios/navigation.service';
 })
 export class JuegoInundacionPage implements OnInit {
 
+  games = [
+    {
+      type: 'Opcion Multiple',
+      levels: [1, 2, 3]
+    },
+    {
+      type: 'Completar la Oracion',
+      levels: [1, 2, 3]
+    },
+    {
+      type: 'Point and click',
+      levels: [1, 2, 3]
+    }
+  ];
+
   constructor(private navCtrl: NavController, private navigationService: NavigationService) { }
 
   ngOnInit() {
@@ -26,8 +41,8 @@ export class JuegoInundacionPage implements OnInit {
     this.navCtrl.navigateForward('/inicio-sesion');
   }
 
-  navigateToJuegoInundacion(nivel: number): void {
-    const targetPage = `/nivel${nivel}-inundacion`;
+  navigateToJuegoInundacion(level: number): void {
+    const targetPage = `/nivel${level}-inundacion`;
     this.triggerTransition('water-transition', targetPage);
   }
 
@@ -40,6 +55,7 @@ export class JuegoInundacionPage implements OnInit {
       this.navCtrl.navigateForward(targetPage).then(() => {
         document.body.removeChild(transitionElement);
       });
-    }, 2000); 
+    }, 2000);
   }
 }
+
