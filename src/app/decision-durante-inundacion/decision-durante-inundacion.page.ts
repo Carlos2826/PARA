@@ -12,25 +12,25 @@ export class DecisionDuranteInundacionPage implements OnInit {
   sections = [
     {
       title: 'Seguridad personal',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Seguridad personal.jpg',
       caption: 'Seguridad personal',
       description: 'No caminar ni conducir a través de aguas inundadas.'
     },
     {
       title: 'Refugios temporales',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Refugios temporales.jpg',
       caption: 'Refugios temporales',
       description: 'Identificar y dirigirse a refugios seguros.'
     },
     {
       title: 'Comunicación',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Comunicación.jpg',
       caption: 'Comunicación',
       description: 'Mantenerse en contacto con familiares y servicios de emergencia.'
     },
     {
       title: 'Primeros auxilios',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Primeros auxilios.jpg',
       caption: 'Primeros auxilios',
       description: 'Proporcionar primeros auxilios básicos en situaciones de emergencia.'
     }

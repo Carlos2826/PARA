@@ -12,25 +12,25 @@ export class ReconocimientoPotencialesDeslizamientoPage implements OnInit {
   sections = [
     {
       title: 'Monitoreo del suelo',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Monitoreo suelo.jpg',
       caption: 'Monitoreo del suelo',
       description: 'Identificar grietas en el suelo y movimientos de tierra.'
     },
     {
       title: 'Cambios en el paisaje',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Cambios suelo.jpg',
       caption: 'Cambios en el paisaje',
       description: 'Reconocer cambios en el terreno y la vegetación.'
     },
     {
       title: 'Patrones de lluvia',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Patrones lluvia.jpg',
       caption: 'Patrones de lluvia',
       description: 'Entender cómo la lluvia intensa y prolongada puede aumentar el riesgo.'
     },
     {
       title: 'Alertas y advertencias',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Alertas y advertencias.jpg',
       caption: 'Alertas y advertencias',
       description: 'Comprender y reaccionar ante las alertas de deslizamientos.'
     }

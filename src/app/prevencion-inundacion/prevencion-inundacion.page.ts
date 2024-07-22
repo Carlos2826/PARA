@@ -12,25 +12,25 @@ export class PrevencionInundacionPage implements OnInit {
   sections = [
     {
       title: 'Preparación del hogar',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Preparación del hogar.jpg',
       caption: 'Preparación del hogar',
       description: 'Cómo asegurar ventanas y puertas, mover objetos de valor a pisos más altos.'
     },
     {
       title: 'Kit de emergencia',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Kit de emergencia.jpg',
       caption: 'Kit de emergencia',
       description: 'Qué incluir en un kit de emergencia (agua, comida no perecedera, medicinas, linternas, etc.).'
     },
     {
       title: 'Evacuación',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Evacuación.jpg',
       caption: 'Evacuación',
       description: 'Planes de evacuación y rutas seguras.'
     },
     {
       title: 'Conocimiento de alertas meteorológicas',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Conocimiento de alertas.jpg',
       caption: 'Conocimiento de alertas meteorológicas',
       description: 'Comprender y actuar según las alertas meteorológicas.'
     }

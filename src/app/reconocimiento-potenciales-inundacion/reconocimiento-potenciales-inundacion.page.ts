@@ -12,25 +12,25 @@ export class ReconocimientoPotencialesInundacionPage implements OnInit {
   sections = [
     {
       title: 'Patrones climáticos',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Patrones climáticos.jpg',
       caption: 'Patrones climáticos',
       description: 'Identificar patrones climáticos que podrían indicar una inundación.'
     },
     {
       title: 'Condiciones del terreno',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Condiciones del terreno.jpg',
       caption: 'Condiciones del terreno',
       description: 'Reconocer áreas propensas a inundaciones.'
     },
     {
       title: 'Monitoreo de ríos y arroyos',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Monitoreo de ríos.jpg',
       caption: 'Monitoreo de ríos y arroyos',
       description: 'Observación de niveles de agua en ríos y arroyos cercanos.'
     },
     {
       title: 'Alertas y advertencias',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/Alertas advertencias.jpg',
       caption: 'Alertas y advertencias',
       description: 'Entender y reaccionar ante las alertas de inundación emitidas por las autoridades.'
     }
