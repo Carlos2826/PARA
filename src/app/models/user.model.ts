@@ -1,9 +1,8 @@
 export interface User {
+  ID: number;
   username: string;
-  password?: string; // Hacemos que la propiedad password sea opcional
+  password?: string;
   nombre?: string;
   apellido?: string;
-  perfil?: string;
-  selected?: boolean;
-  role?: string; // Añadimos la propiedad role
+  admin: boolean;  // Asegúrate de que esto esté presente y sea del tipo correcto
 }

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController } from '@ionic/angular';
 import { NavigationService } from '../servicios/navigation.service';
-import { AuthService } from '../servicios/auth.service';
-import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +9,13 @@ import { User } from '../models/user.model';
 })
 export class HomePage implements OnInit {
   username: string | null = null;
-  currentUser: User | null = null;
+  currentUser: any | null = null;
   isAdmin: boolean = false;
 
   constructor(
     private navCtrl: NavController,
     private navigationService: NavigationService,
-    private menuCtrl: MenuController,
-    private authService: AuthService
+    private menuCtrl: MenuController
   ) {}
 
   ngOnInit() {
@@ -30,9 +27,18 @@ export class HomePage implements OnInit {
   }
 
   updateUserInfo() {
-    this.currentUser = this.authService.getCurrentUser();
-    this.username = this.currentUser?.username || null;
-    this.isAdmin = this.currentUser?.role === 'admin' || false;
+    const user = localStorage.getItem('currentUser');
+    console.log('User from localStorage:', user); // Añadir esta línea para depuración
+    if (user) {
+      this.currentUser = JSON.parse(user);
+      console.log('Parsed currentUser:', this.currentUser); // Añadir esta línea para depuración
+      this.username = this.currentUser.username;
+      // Asegúrate de que admin se compara correctamente como número
+      this.isAdmin = Number(this.currentUser.admin) === 1;
+      console.log('Is Admin:', this.isAdmin); // Añadir esta línea para depuración
+    } else {
+      console.log('No user found in localStorage'); // Añadir esta línea para depuración
+    }
   }
 
   goHome() {
@@ -77,7 +83,7 @@ export class HomePage implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    localStorage.removeItem('currentUser');
     this.username = null;
     this.isAdmin = false;
     this.navCtrl.navigateForward('/home');
