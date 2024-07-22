@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { MusicService } from '../servicios/musica.service'; // Asegúrate de que esta ruta sea correcta
+import { MusicService } from '../servicios/musica.service';
 
 @Component({
   selector: 'app-opciones',
@@ -10,10 +10,10 @@ import { MusicService } from '../servicios/musica.service'; // Asegúrate de que
 export class OpcionesPage implements OnInit, OnDestroy {
 
   settings = {
-    music: true, // Asegurarse de que la música esté activada por defecto
-    musicVolume: 0.5, // Valor predeterminado del volumen de música
+    music: true,
+    musicVolume: 0.5, // Valor inicial en la mitad
     sound: false,
-    soundVolume: 0, // Valor inicial del volumen de efectos de sonido
+    soundVolume: 0,
     notifications: false,
     darkMode: false
   };
@@ -22,7 +22,7 @@ export class OpcionesPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadSettings();
-    this.applySettings();
+    this.applySettings(true); // Aplicar configuración inicial
   }
 
   goBack() {
@@ -30,14 +30,16 @@ export class OpcionesPage implements OnInit, OnDestroy {
   }
 
   resetChanges() {
-    this.settings.music = true;
-    this.settings.musicVolume = 0.5;
-    this.settings.sound = false;
-    this.settings.soundVolume = 0;
-    this.settings.notifications = false;
-    this.settings.darkMode = false;
+    this.settings = {
+      music: true,
+      musicVolume: 0.5, // Restablecer el volumen a la mitad
+      sound: false,
+      soundVolume: 0,
+      notifications: false,
+      darkMode: false
+    };
     this.saveSettings();
-    this.applySettings();
+    this.applySettings(true); // Aplicar configuración inicial al resetear
   }
 
   openAccountSettings() {
@@ -49,6 +51,7 @@ export class OpcionesPage implements OnInit, OnDestroy {
     if (savedSettings) {
       this.settings = JSON.parse(savedSettings);
     }
+    this.applySettings(true); // Aplicar configuración inicial si no hay ajustes guardados
   }
 
   saveSettings() {
@@ -64,8 +67,8 @@ export class OpcionesPage implements OnInit, OnDestroy {
     this.applySettings();
   }
 
-  applySettings() {
-    if (this.settings.music) {
+  applySettings(initial = false) {
+    if (this.settings.music || initial) {
       this.musicService.enableMusic();
     } else {
       this.musicService.disableMusic();
@@ -74,6 +77,7 @@ export class OpcionesPage implements OnInit, OnDestroy {
   }
 
   toggleMusic() {
+    this.settings.music = !this.settings.music;
     if (this.settings.music) {
       this.musicService.enableMusic();
     } else {

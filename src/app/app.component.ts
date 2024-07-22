@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { MusicService } from './servicios/musica.service'; // Importar el servicio de música
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private platform: Platform, private musicService: MusicService) { // Inyectar el servicio de música
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.musicService.enableMusic(); // Asegurarse de que la música esté habilitada al iniciar la aplicación
+    });
+  }
 }

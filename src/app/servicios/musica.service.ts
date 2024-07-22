@@ -34,4 +34,3 @@ export class MusicService {
     return this.audio.volume;
   }
 }
-

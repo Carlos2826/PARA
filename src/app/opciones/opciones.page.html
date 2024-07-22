@@ -25,14 +25,14 @@
           <ion-label>Música ambiental</ion-label>
           <ion-toggle slot="start" [(ngModel)]="settings.music" (ionChange)="toggleMusic()"></ion-toggle>
           <div class="range-container">
-            <ion-range [(ngModel)]="settings.musicVolume" min="0" max="1" step="0.1" (ionChange)="setMusicVolume($event)"></ion-range>
+            <ion-range [(ngModel)]="settings.musicVolume" (ionChange)="setMusicVolume($event)"></ion-range>
           </div>
         </ion-item>
         <ion-item lines="none" class="item-with-range">
           <ion-label>Efectos de sonido</ion-label>
           <ion-toggle slot="start" [(ngModel)]="settings.sound" (ionChange)="toggleEffects()"></ion-toggle>
           <div class="range-container" *ngIf="settings.sound">
-            <ion-range [(ngModel)]="settings.soundVolume" min="0" max="1" step="0.1" (ionChange)="setEffectsVolume($event)"></ion-range>
+            <ion-range [(ngModel)]="settings.soundVolume" (ionChange)="setEffectsVolume($event)"></ion-range>
           </div>
         </ion-item>
         <ion-item lines="none">
