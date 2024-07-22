@@ -149,3 +149,12 @@ ion-header {
   opacity: 0.5; /* Ajusta la opacidad si deseas un efecto más sutil */
 }
 
+.custom-button img.button-icon {
+  position: absolute;
+  top: 10%; /* Ajusta este valor para mover la imagen hacia abajo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%; /* Ajusta este valor para cambiar el tamaño de la imagen */
+  height: auto;
+}
+
