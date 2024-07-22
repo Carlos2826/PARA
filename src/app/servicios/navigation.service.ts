@@ -29,3 +29,4 @@ export class NavigationService {
     this.navCtrl.navigateRoot('/home');
   }
 }
+
