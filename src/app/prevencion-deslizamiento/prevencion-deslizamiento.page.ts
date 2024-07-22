@@ -12,25 +12,25 @@ export class PrevencionDeslizamientoPage implements OnInit {
   sections = [
     {
       title: 'Evaluación del riesgo',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/evaluacion.jpg',
       caption: 'Evaluación del riesgo',
       description: 'Identificar áreas propensas a deslizamientos de tierra.'
     },
     {
       title: 'Construcción segura',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/construccion.jpg',
       caption: 'Construcción segura',
       description: 'Métodos de construcción y modificaciones para reducir el riesgo.'
     },
     {
       title: 'Drenaje adecuado',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/sistema.jpg',
       caption: 'Drenaje adecuado',
       description: 'Importancia de sistemas de drenaje para evitar la saturación del suelo.'
     },
     {
       title: 'Vegetación adecuada',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/vegetacion.jpg',
       caption: 'Vegetación adecuada',
       description: 'Plantación de árboles y vegetación para estabilizar el suelo.'
     }
