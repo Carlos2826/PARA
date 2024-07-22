@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { MusicService } from '../servicios/musica.service'; // Asegúrate de que esta ruta sea correcta
 
 @Component({
   selector: 'app-opciones',
@@ -9,18 +10,19 @@ import { NavController } from '@ionic/angular';
 export class OpcionesPage implements OnInit, OnDestroy {
 
   settings = {
-    music: false,
-    musicVolume: 0, // Valor inicial del volumen de música
+    music: true, // Asegurarse de que la música esté activada por defecto
+    musicVolume: 0.5, // Valor predeterminado del volumen de música
     sound: false,
     soundVolume: 0, // Valor inicial del volumen de efectos de sonido
     notifications: false,
     darkMode: false
   };
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private musicService: MusicService) { }
 
   ngOnInit() {
     this.loadSettings();
+    this.applySettings();
   }
 
   goBack() {
@@ -28,19 +30,17 @@ export class OpcionesPage implements OnInit, OnDestroy {
   }
 
   resetChanges() {
-    this.settings = {
-      music: false,
-      musicVolume: 0, // Restablecer el volumen de música a 0
-      sound: false,
-      soundVolume: 0, // Restablecer el volumen de efectos de sonido a 0
-      notifications: false,
-      darkMode: false
-    };
-    this.saveSettings(); // Guardar los ajustes restablecidos
+    this.settings.music = true;
+    this.settings.musicVolume = 0.5;
+    this.settings.sound = false;
+    this.settings.soundVolume = 0;
+    this.settings.notifications = false;
+    this.settings.darkMode = false;
+    this.saveSettings();
+    this.applySettings();
   }
 
   openAccountSettings() {
-    // Aquí puedes agregar la lógica para abrir la configuración de la cuenta
     this.navCtrl.navigateForward('/configuracion-cuenta');
   }
 
@@ -61,5 +61,42 @@ export class OpcionesPage implements OnInit, OnDestroy {
 
   onSettingChange() {
     this.saveSettings();
+    this.applySettings();
+  }
+
+  applySettings() {
+    if (this.settings.music) {
+      this.musicService.enableMusic();
+    } else {
+      this.musicService.disableMusic();
+    }
+    this.musicService.setMusicVolume(this.settings.musicVolume);
+  }
+
+  toggleMusic() {
+    if (this.settings.music) {
+      this.musicService.enableMusic();
+    } else {
+      this.musicService.disableMusic();
+    }
+    this.onSettingChange();
+  }
+
+  setMusicVolume(event: any) {
+    const volume = event.detail.value;
+    this.settings.musicVolume = volume;
+    this.musicService.setMusicVolume(volume);
+    this.onSettingChange();
+  }
+
+  toggleEffects() {
+    this.settings.sound = !this.settings.sound;
+    this.onSettingChange();
+  }
+
+  setEffectsVolume(event: any) {
+    const volume = event.detail.value;
+    this.settings.soundVolume = volume;
+    this.onSettingChange();
   }
 }
