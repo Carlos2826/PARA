@@ -12,25 +12,25 @@ export class DecisionDuranteDeslizamientoPage implements OnInit {
   sections = [
     {
       title: 'Evacuación inmediata',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/evacuacion in.jpg',
       caption: 'Evacuación inmediata',
       description: 'Cómo evacuar rápidamente y hacia dónde dirigirse.'
     },
     {
       title: 'Identificación de señales',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/id señales.jpg',
       caption: 'Identificación de señales',
       description: 'Identificar señales inmediatas de un deslizamiento de tierra (sonidos, movimientos del suelo).'
     },
     {
       title: 'Refugios seguros',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/refugio s.jpg',
       caption: 'Refugios seguros',
       description: 'Identificar lugares seguros en caso de no poder evacuar.'
     },
     {
       title: 'Ayuda a otros',
-      imageSrc: 'assets/img/icono de ayuda.png',
+      imageSrc: 'assets/img/ayuda a otros.jpg',
       caption: 'Ayuda a otros',
       description: 'Cómo ayudar a otros de manera segura durante la evacuación.'
     }
