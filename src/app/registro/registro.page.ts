@@ -64,7 +64,12 @@ export class RegistroPage {
   registrarUsuario() {
     this.authService.register({
       username: this.nombreUsuario,
-      password: this.contrasena
+      password: this.contrasena,
+      nombre: this.nombre,
+      apellido: this.apellido,
+      role: 'user',
+      perfil: 'Usuario',
+      selected: false
     });
     alert('Registro exitoso.');
     this.navCtrl.navigateBack(this.navigationService.getPreviousUrl());

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AuthService } from '../servicios/auth.service';
 import { User } from '../models/user.model';
 
 @Component({
@@ -8,49 +9,59 @@ import { User } from '../models/user.model';
   styleUrls: ['./administracion.page.scss'],
 })
 export class AdministracionPage implements OnInit {
-  users: User[] = [
-    { username: 'Cristina', nombre: 'Cristina', apellido: 'Agulló', perfil: 'Administrador al solo lectura', selected: false, password: '' },
-    { username: 'admin', nombre: 'admin', apellido: 'campus', perfil: 'Administrador', selected: false, password: '' },
-    { username: 'Usuario', nombre: 'Usuario', apellido: 'Formación', perfil: 'Administrador general', selected: false, password: '' }
-  ];
+  users: User[] = [];
+  currentUser: User | null = null;
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private authService: AuthService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadUsers();
+  }
+
+  loadUsers() {
+    this.currentUser = this.authService.getCurrentUser();
+    this.users = this.authService.getUsers().filter(user => user.nombre && user.apellido && user.username !== this.currentUser?.username);
+  }
+
+  addUser() {
+    const newUser: User = {
+      username: 'nuevoUsuario',
+      password: '12345',
+      nombre: 'Nuevo',
+      apellido: 'Usuario',
+      perfil: 'Usuario',
+      role: 'user',
+      selected: false
+    };
+    this.authService.register(newUser);
+    this.loadUsers();
+  }
+
+  deleteUser(user: User) {
+    this.users = this.users.filter(u => u.username !== user.username);
+    this.authService.updateUsers(this.users);
+    this.loadUsers();
+  }
+
+  deleteSelectedUsers() {
+    this.users = this.users.filter(u => !u.selected);
+    this.authService.updateUsers(this.users);
+    this.loadUsers();
+  }
+
+  activateSelectedUsers() {
+    // Implementar lógica para activar usuarios seleccionados
+  }
+
+  deactivateSelectedUsers() {
+    // Implementar lógica para desactivar usuarios seleccionados
+  }
 
   goBack() {
     this.navCtrl.back();
   }
 
-  goHome() {
-    this.navCtrl.navigateRoot('/home');
-  }
-
-  addUser() {
-    // Lógica para agregar usuario
-  }
-
-  deleteSelectedUsers() {
-    // Lógica para borrar usuarios seleccionados
-  }
-
-  activateSelectedUsers() {
-    // Lógica para activar usuarios seleccionados
-  }
-
-  deactivateSelectedUsers() {
-    // Lógica para desactivar usuarios seleccionados
-  }
-
-  editUser(user: User) {
-    // Lógica para editar usuario
-  }
-
-  deleteUser(user: User) {
-    // Lógica para borrar usuario
-  }
-
-  logout() {
-    // Lógica para cerrar sesión
+  navigateToAyuda() {
+    this.navCtrl.navigateForward('/ayuda');
   }
 }

@@ -38,4 +38,3 @@ export class InicioSesionPage implements OnInit {
     this.navCtrl.navigateForward('/registro');
   }
 }
-

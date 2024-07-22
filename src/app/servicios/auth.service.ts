@@ -17,16 +17,65 @@ export class AuthService {
         password: '12345',
         nombre: 'P.A.R.A.',
         apellido: 'Proteger',
-        role: 'admin'
-      });
+        role: 'admin',
+        perfil: 'Administrador al solo lectura',
+        selected: false
+      }, false);
     }
+    this.registerPredefinedUsers();
   }
 
-  register(user: User) {
+  registerPredefinedUsers() {
+    const predefinedUsers: User[] = [
+      {
+        username: 'Cristina',
+        password: '12345',
+        nombre: 'Cristina',
+        apellido: 'Agulló',
+        role: 'admin',
+        perfil: 'Administrador al solo lectura',
+        selected: false
+      },
+      {
+        username: 'admin',
+        password: '12345',
+        nombre: 'admin',
+        apellido: 'campus',
+        role: 'admin',
+        perfil: 'Administrador',
+        selected: false
+      },
+      {
+        username: 'Usuario',
+        password: '12345',
+        nombre: 'Usuario',
+        apellido: 'Formación',
+        role: 'admin',
+        perfil: 'Administrador general',
+        selected: false
+      }
+    ];
+
+    predefinedUsers.forEach(user => {
+      this.register(user, false);
+    });
+  }
+
+  register(user: User, hashPassword: boolean = true) {
+    if (!user.username || !user.password || !user.nombre || !user.apellido || !user.perfil) {
+      console.error('Faltan campos requeridos para registrar el usuario:', user);
+      return;
+    }
+
     const users = this.getUsers();
-    const hashedPassword = bcrypt.hashSync(user.password || '', 10);
-    user.password = hashedPassword;
+    if (hashPassword) {
+      user.password = bcrypt.hashSync(user.password || '', 10);
+    }
     users.push(user);
+    this.updateUsers(users);
+  }
+
+  updateUsers(users: User[]) {
     localStorage.setItem(this.usersKey, JSON.stringify(users));
   }
 
