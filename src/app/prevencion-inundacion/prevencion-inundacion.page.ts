@@ -14,25 +14,25 @@ export class PrevencionInundacionPage implements OnInit {
       title: 'Preparación del hogar',
       imageSrc: 'assets/img/Preparación del hogar.jpg',
       caption: 'Preparación del hogar',
-      description: 'Cómo asegurar ventanas y puertas, mover objetos de valor a pisos más altos.'
+      description: 'Para proteger tu hogar ante una posible inundación, es esencial tomar varias medidas preventivas. Primero, asegúrate de sellar bien todas las ventanas y puertas para evitar que el agua entre. Mueve los objetos de valor y los muebles a pisos superiores para mantenerlos seguros. Desconecta todos los aparatos eléctricos para prevenir cortocircuitos y posibles incendios.'
     },
     {
       title: 'Kit de emergencia',
       imageSrc: 'assets/img/Kit de emergencia.jpg',
       caption: 'Kit de emergencia',
-      description: 'Qué incluir en un kit de emergencia (agua, comida no perecedera, medicinas, linternas, etc.).'
+      description: 'Un kit de emergencia es vital para enfrentar desastres naturales. Debe incluir agua potable, alimentos no perecederos, medicamentos, un botiquín de primeros auxilios, linternas con baterías adicionales, una radio de emergencia, y documentos importantes. Asegúrate de que todos en tu hogar sepan dónde está y cómo usarlo en caso de emergencia.'
     },
     {
       title: 'Evacuación',
       imageSrc: 'assets/img/Evacuación.jpg',
       caption: 'Evacuación',
-      description: 'Planes de evacuación y rutas seguras.'
+      description: 'Es crucial tener un plan de evacuación en caso de desastres. Identifica rutas seguras y puntos de encuentro. Practica regularmente los procedimientos de evacuación con tu familia para asegurar que todos sepan cómo actuar y llegar a un lugar seguro rápidamente.'
     },
     {
       title: 'Conocimiento de alertas meteorológicas',
       imageSrc: 'assets/img/Conocimiento de alertas.jpg',
       caption: 'Conocimiento de alertas meteorológicas',
-      description: 'Comprender y actuar según las alertas meteorológicas.'
+      description: 'Es crucial comprender y actuar rápidamente ante las alertas meteorológicas. Mantente informado a través de aplicaciones y medios de comunicación. Conoce los diferentes tipos de alertas y las acciones necesarias para proteger a tu familia y tu hogar. Prepararse adecuadamente puede salvar vidas.'
     }
   ];
 
