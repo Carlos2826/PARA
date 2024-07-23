@@ -1,15 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
-interface User {
-  ID: number;
-  nombre: string;
-  apellido: string;
-  username: string;
-  password: string;
-  admin: number;
-  selected?: boolean; // Añadimos esta propiedad temporalmente
-}
+import { User } from '../models/user.model'; // Asegúrate de que la ruta es correcta
 
 @Component({
   selector: 'app-administracion',
@@ -18,12 +9,12 @@ interface User {
 })
 export class AdministracionPage implements OnInit {
   currentUser: User = {
-    ID: 0,
-    nombre: '',
-    apellido: '',
-    username: '',
-    password: '',
-    admin: 0
+    ID_Usuario: 0,
+    Nombre: '',
+    Apellido: '',
+    Usuario: '',
+    Password: '', // Usamos Password
+    Admin: 0
   };
   users: User[] = [];
 
@@ -42,10 +33,12 @@ export class AdministracionPage implements OnInit {
   }
 
   getUsers() {
-    const users = localStorage.getItem('users');
-    if (users) {
-      this.users = JSON.parse(users).filter((user: User) => user.username !== this.currentUser.username);
-    }
+    fetch('http://localhost:8105/users')
+      .then(response => response.json())
+      .then(data => {
+        this.users = data;
+      })
+      .catch(error => console.error('Error fetching users:', error));
   }
 
   saveUsers() {
@@ -72,7 +65,7 @@ export class AdministracionPage implements OnInit {
   activateSelectedUsers() {
     const selectedUsers = this.users.filter(user => user.selected);
     selectedUsers.forEach(user => {
-      user.admin = 1; // Activa el usuario
+      user.Admin = 1; // Activa el usuario
       this.updateUser(user);
     });
   }
@@ -80,7 +73,7 @@ export class AdministracionPage implements OnInit {
   deactivateSelectedUsers() {
     const selectedUsers = this.users.filter(user => user.selected);
     selectedUsers.forEach(user => {
-      user.admin = 0; // Desactiva el usuario
+      user.Admin = 0; // Desactiva el usuario
       this.updateUser(user);
     });
   }
@@ -90,15 +83,33 @@ export class AdministracionPage implements OnInit {
   }
 
   deleteUser(user: User) {
-    this.users = this.users.filter(u => u.username !== user.username);
-    this.saveUsers();
+    fetch(`http://localhost:8105/user/delete/${user.ID_Usuario}`, {
+      method: 'DELETE',
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.users = this.users.filter(u => u.ID_Usuario !== user.ID_Usuario);
+        this.saveUsers();
+      })
+      .catch(error => console.error('Error deleting user:', error));
   }
 
   updateUser(user: User) {
-    const index = this.users.findIndex(u => u.username === user.username);
-    if (index !== -1) {
-      this.users[index] = user;
-      this.saveUsers();
-    }
+    fetch('http://localhost:8105/user/update', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then(response => response.json())
+      .then(data => {
+        const index = this.users.findIndex(u => u.ID_Usuario === user.ID_Usuario);
+        if (index !== -1) {
+          this.users[index] = user;
+          this.saveUsers();
+        }
+      })
+      .catch(error => console.error('Error updating user:', error));
   }
 }

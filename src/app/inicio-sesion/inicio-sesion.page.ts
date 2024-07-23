@@ -33,7 +33,7 @@ export class InicioSesionPage {
     .then(data => {
       if (data.length === 0) {
         alert('Esta cuenta no existe.');
-      } else if (data[0].Contraseña !== this.password) {
+      } else if (data[0].Password !== this.password) {  // Cambiado a Password
         alert('Contraseña incorrecta, verifique e intente de nuevo.');
       } else {
         localStorage.setItem('currentUser', JSON.stringify({
@@ -41,11 +41,11 @@ export class InicioSesionPage {
           nombre: data[0].Nombre,
           apellido: data[0].Apellido,
           username: data[0].Usuario,
-          password: data[0].Contraseña,
+          password: data[0].Password,  // Cambiado a Password
           admin: data[0].Admin
         }));
         alert('Bienvenido ' + data[0].Nombre);
-        this.navCtrl.navigateBack(this.navigationService.getPreviousUrl());
+        this.navCtrl.back();  // Navega a la pantalla anterior
       }
     })
     .catch(error => {
