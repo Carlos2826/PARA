@@ -12,20 +12,24 @@
       </ion-title>
     </div>
     <ion-buttons slot="end">
-      <ion-button (click)="navigateToInicioSesion()">
+      <ion-button *ngIf="!username" (click)="navigateToInicioSesion()">
         <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
       </ion-button>
-      <ion-button>
+      <ion-button *ngIf="username" (click)="openMenu()">
+        <img src="assets/img/avatar.png" alt="Usuario Activo" class="icon">
+        {{ username }}
+      </ion-button>
+      <ion-button (click)="navigateToRanking()">
         <img src="assets/img/icono de ranking.png" alt="Ranking" class="icon">
       </ion-button>
-      <ion-button>
+      <ion-button (click)="navigateToAyuda()">
         <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="main-content">
   <div class="prevencion-inundacion-container">
     <img src="assets/img/fondo.jpg" class="background-image" />
     <div class="title-box">
@@ -49,3 +53,39 @@
   <div class="footer-bar"></div>
 </ion-content>
 
+<!-- Menú -->
+<ion-menu side="end" menuId="custom-menu" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="assets/img/avatar.png">
+        </ion-avatar>
+        <ion-label>{{ username }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nombre: {{ currentUser?.nombre }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Apellido: {{ currentUser?.apellido }}</ion-label>
+      </ion-item>
+      <ion-item button (click)="editarPerfil()">
+        <ion-label>Editar Perfil</ion-label>
+      </ion-item>
+      <ion-item button (click)="cambiarContrasena()">
+        <ion-label>Cambiar Contraseña</ion-label>
+      </ion-item>
+      <ion-item *ngIf="isAdmin" button (click)="configuracionAdmin()">
+        <ion-label>Configuración de Administrador</ion-label>
+      </ion-item>
+      <ion-item button (click)="logout()">
+        <ion-label>Salir de Cuenta</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
