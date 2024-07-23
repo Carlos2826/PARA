@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Nivel2DeslizamientoCOPage } from './nivel2-deslizamiento-c.o.page';
+
+import { TimeoutPage } from './timeout.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: Nivel2DeslizamientoCOPage
+    component: TimeoutPage
   }
 ];
 
@@ -13,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class Nivel2DeslizamientoCORoutingModule {}
+export class TimeoutPageRoutingModule {}

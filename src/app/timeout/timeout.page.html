@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="black-toolbar">
+    <div class="title-container">
+      <ion-title>
+        Preparación Ante Riesgo<br>y Amenazas
+      </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="timeout-container">
+    <img src="assets/img/fondo.jpg" class="background-image" />
+    <img [src]="imageUrl" alt="Timeout Image" class="timeout-image" />
+    <div class="button-container">
+      <ion-button (click)="retry()" expand="block" class="timeout-button">Reintentar</ion-button>
+      <ion-button (click)="goToLevelSelection()" expand="block" class="timeout-button">Selección de nivel</ion-button>
+      <ion-button (click)="goHome()" expand="block" class="timeout-button">Home</ion-button>
+    </div>
+  </div>
+</ion-content>

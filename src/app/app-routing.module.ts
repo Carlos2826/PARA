@@ -174,6 +174,10 @@ const routes: Routes = [
   {
     path: 'nivel1-deslizamiento-c.o',
     loadChildren: () => import('./nivel1-deslizamiento-c.o/nivel1-deslizamiento-c.o.module').then( m => m.Nivel1DeslizamientoCOPageModule)
+  },
+  {
+    path: 'timeout',
+    loadChildren: () => import('./timeout/timeout.module').then( m => m.TimeoutPageModule)
   }
 ];
 

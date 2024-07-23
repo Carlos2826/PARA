@@ -34,7 +34,7 @@
       <ion-slide *ngFor="let question of questions; let i = index">
         <div class="game-container">
           <h2 class="sentence-title">{{ question.text }}</h2>
-          <img src="assets/img/placeholder.png" alt="Image" class="sentence-image" />
+          <img src="assets/img/nv-1-w.png" alt="Image" class="sentence-image" />
           <div class="sentence">
             <span class="text-part" *ngFor="let part of question.sentence">
               <ng-container *ngIf="!part.blank">{{ part.text }}</ng-container>

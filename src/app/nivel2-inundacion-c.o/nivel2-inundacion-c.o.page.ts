@@ -115,9 +115,14 @@ export class Nivel2InundacionCOPage implements OnInit {
         this.timer--;
       } else {
         clearInterval(this.interval);
-        this.finishQuiz();
+        this.navCtrl.navigateForward('/timeout');
       }
     }, 1000);
+  }
+
+  timeOut() {
+    clearInterval(this.interval);
+    this.navCtrl.navigateForward('/timeout');
   }
 
   allowDrop(event: DragEvent) {

@@ -63,10 +63,19 @@ export class Nivel1InundacionPage implements OnInit {
         this.timer--;
       } else {
         clearInterval(this.interval);
-        this.finishQuiz();
+        this.navCtrl.navigateForward('/timeout', {
+          queryParams: {
+            jugabilidad: 'inundacion' // O 'deslizamiento' dependiendo de la jugabilidad actual
+          }
+        });
       }
     }, 1000);
-  }
+  }  
+
+  timeOut() {
+    clearInterval(this.interval);
+    this.navCtrl.navigateForward('/timeout');
+  }  
 
   selectAnswer(questionIndex: number, answer: string) {
     this.answers[questionIndex] = answer;

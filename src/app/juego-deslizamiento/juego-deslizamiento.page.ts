@@ -11,16 +11,16 @@ export class JuegoDeslizamientoPage implements OnInit {
 
   games = [
     {
-      type: 'Opcion Multiple',
+      type: 'Opción Múltiple',
       levels: [1, 2, 3]
     },
     {
-      type: 'Completar la Oracion',
-      levels: [1, 2, 3]
+      type: 'Completar la Oración',
+      levels: [4, 5, 6]
     },
     {
-      type: 'Point and click',
-      levels: [1, 2, 3]
+      type: 'Point and Click',
+      levels: [7, 8, 9]
     }
   ];
 
@@ -41,9 +41,28 @@ export class JuegoDeslizamientoPage implements OnInit {
     this.navCtrl.navigateForward('/inicio-sesion');
   }
 
-  navigateToJuegoDeslizamiento(nivel: number): void {
-    const targetPage = `/nivel${nivel}-deslizamiento`;
-    this.triggerTransition('tierra-transition', targetPage);
+  navigateToNivel1Deslizamiento(): void {
+    this.triggerTransition('earth-transition', '/nivel1-deslizamiento');
+  }
+
+  navigateToNivel2Deslizamiento(): void {
+    this.triggerTransition('earth-transition', '/nivel2-deslizamiento');
+  }
+
+  navigateToNivel3Deslizamiento(): void {
+    this.triggerTransition('earth-transition', '/nivel3-deslizamiento');
+  }
+
+  navigateToNivel1DeslizamientoCO(): void {
+    this.triggerTransition('earth-transition', '/nivel1-deslizamiento-c.o');
+  }
+
+  navigateToNivel2DeslizamientoCO(): void {
+    this.triggerTransition('earth-transition', '/nivel2-deslizamiento-c.o');
+  }
+
+  navigateToNivel3DeslizamientoCO(): void {
+    this.triggerTransition('earth-transition', '/nivel3-deslizamiento-c.o');
   }
 
   triggerTransition(animationClass: string, targetPage: string): void {
