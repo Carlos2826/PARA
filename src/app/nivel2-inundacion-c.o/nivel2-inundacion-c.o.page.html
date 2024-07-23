@@ -1,0 +1,67 @@
+<!-- nivel2-inundacion-c.o.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
+      </ion-button>
+    </ion-buttons>
+    <div class="title-container">
+      <img src="assets/img/logo.png" alt="Logo" class="logo" (click)="goHome()" />
+      <ion-title>
+        Preparación Ante Riesgo<br>y Amenazas
+      </ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToInicioSesion()">
+        <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ranking.png" alt="Ranking" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="quiz-container">
+    <img src="assets/img/fondo.jpg" class="background-image" />
+    <div class="timer">Tiempo restante: {{ timer }} segundos</div>
+
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let question of questions; let i = index">
+        <div class="game-container">
+          <h2 class="sentence-title">{{ question.text }}</h2>
+          <img src="assets/img/placeholder.png" alt="Image" class="sentence-image" />
+          <div class="sentence">
+            <span class="text-part" *ngFor="let part of question.sentence">
+              <ng-container *ngIf="!part.blank">{{ part.text }}</ng-container>
+              <ng-container *ngIf="part.blank">
+                <span class="blank" [attr.id]="'blank-' + i + '-' + part.id" (drop)="drop($event)" (dragover)="allowDrop($event)"></span>
+              </ng-container>
+            </span>
+          </div>
+          <div class="word-options">
+            <ion-button *ngFor="let option of question.options" class="word-button" draggable="true" (dragstart)="drag($event, option)">
+              {{ option }}
+            </ion-button>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+    <!-- Botón de finalizar -->
+    <div class="carousel-nav right" (click)="finishQuiz()">
+      <img src="assets/img/flecha derecha-finalizar.png" alt="Finalizar" class="nav-icon">
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="footer-toolbar">
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-footer>

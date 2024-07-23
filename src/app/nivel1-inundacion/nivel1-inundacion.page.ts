@@ -38,8 +38,12 @@ export class Nivel1InundacionPage implements OnInit {
 
   ngOnInit() {
     this.shuffleQuestions();
+    this.questions.forEach(question => {
+      question.options = this.shuffleArray(question.options);
+    });
     this.startTimer();
   }
+  
 
   goHome(): void {
     this.navigationService.goHome();
@@ -107,4 +111,13 @@ export class Nivel1InundacionPage implements OnInit {
       [this.questions[i], this.questions[j]] = [this.questions[j], this.questions[i]];
     }
   }
+
+  shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  
 }

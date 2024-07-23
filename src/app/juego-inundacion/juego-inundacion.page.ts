@@ -41,9 +41,40 @@ export class JuegoInundacionPage implements OnInit {
     this.navCtrl.navigateForward('/inicio-sesion');
   }
 
-  navigateToJuegoInundacion(level: number): void {
-    const targetPage = `/nivel${level}-inundacion`;
-    this.triggerTransition('water-transition', targetPage);
+  navigateToNivel1Inundacion(): void {
+    this.triggerTransition('water-transition', '/nivel1-inundacion');
+  }
+
+  navigateToNivel2Inundacion(): void {
+    this.triggerTransition('water-transition', '/nivel2-inundacion');
+  }
+
+  navigateToNivel3Inundacion(): void {
+    this.triggerTransition('water-transition', '/nivel3-inundacion');
+  }
+
+  navigateToNivel1InundacionCO(): void {
+    this.triggerTransition('water-transition', '/nivel1-inundacion-c.o');
+  }
+
+  navigateToNivel2InundacionCO(): void {
+    this.triggerTransition('water-transition', '/nivel2-inundacion-c.o');
+  }
+
+  navigateToNivel3InundacionCO(): void {
+    this.triggerTransition('water-transition', '/nivel3-inundacion-c.o');
+  }
+
+  navigateToNivel1Deslizamiento(): void {
+    this.triggerTransition('water-transition', '/nivel1-deslizamiento');
+  }
+
+  navigateToNivel2Deslizamiento(): void {
+    this.triggerTransition('water-transition', '/nivel2-deslizamiento');
+  }
+
+  navigateToNivel3Deslizamiento(): void {
+    this.triggerTransition('water-transition', '/nivel3-deslizamiento');
   }
 
   triggerTransition(animationClass: string, targetPage: string): void {
@@ -58,4 +89,3 @@ export class JuegoInundacionPage implements OnInit {
     }, 2000);
   }
 }
-

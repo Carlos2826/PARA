@@ -1,19 +1,7 @@
+// nivel2-inundacion.page.ts
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { NavigationService } from '../servicios/navigation.service';
-
-interface SentencePart {
-  text: string;
-  blank: boolean;
-  id?: number;
-}
-
-interface Question {
-  text: string;
-  sentence: SentencePart[];
-  options: string[];
-  correct: string[];
-}
 
 @Component({
   selector: 'app-nivel2-inundacion',
@@ -21,77 +9,41 @@ interface Question {
   styleUrls: ['./nivel2-inundacion.page.scss'],
 })
 export class Nivel2InundacionPage implements OnInit {
-  questions: Question[] = [
+
+  questions = [
     {
-      text: 'Completa la oración:',
-      sentence: [
-        { text: 'Esta es una ', blank: false },
-        { text: '', blank: true, id: 1 },
-        { text: ' de prueba para ', blank: false },
-        { text: '', blank: true, id: 2 },
-        { text: ' el juego.', blank: false }
-      ],
-      options: ['palabra1', 'palabra2', 'palabra3', 'palabra4'],
-      correct: ['palabra1', 'palabra2']
+      text: 'Pregunta 1',
+      options: ['Respuesta 1', 'Respuesta 2', 'Respuesta 3', 'Respuesta 4'],
+      correct: 'Respuesta 1'
     },
     {
-      text: 'Completa la oración:',
-      sentence: [
-        { text: 'El ', blank: false },
-        { text: '', blank: true, id: 1 },
-        { text: ' es azul.', blank: false }
-      ],
-      options: ['cielo', 'mar', 'sol', 'tierra'],
-      correct: ['cielo']
+      text: 'Pregunta 2',
+      options: ['Respuesta 1', 'Respuesta 2', 'Respuesta 3', 'Respuesta 4'],
+      correct: 'Respuesta 2'
     },
     {
-      text: 'Completa la oración:',
-      sentence: [
-        { text: 'El gato ', blank: false },
-        { text: '', blank: true, id: 1 },
-        { text: ' en el tejado.', blank: false }
-      ],
-      options: ['salta', 'corre', 'duerme', 'juega'],
-      correct: ['salta']
-    },
-    {
-      text: 'Completa la oración:',
-      sentence: [
-        { text: 'La ', blank: false },
-        { text: '', blank: true, id: 1 },
-        { text: ' está en el jardín.', blank: false }
-      ],
-      options: ['flor', 'mesa', 'piedra', 'fuente'],
-      correct: ['flor']
-    },
-    {
-      text: 'Completa la oración:',
-      sentence: [
-        { text: 'El perro ', blank: false },
-        { text: '', blank: true, id: 1 },
-        { text: ' en el parque.', blank: false }
-      ],
-      options: ['corre', 'ladra', 'salta', 'duerme'],
-      correct: ['corre']
+      text: 'Pregunta 3',
+      options: ['Respuesta 1', 'Respuesta 2', 'Respuesta 3', 'Respuesta 4'],
+      correct: 'Respuesta 3'
     }
   ];
 
+  answers: string[] = [];
   timer: number = 40;
   interval: any;
   score: number = 0;
   currentIndex: number = 0;
-  selectedOptions: any = {};
-  slideOpts = {
-    initialSlide: 0,
-    speed: 400
-  };
+  selectedOptions: string[] = new Array(this.questions.length).fill(null);
 
   constructor(private navCtrl: NavController, private navigationService: NavigationService) { }
 
   ngOnInit() {
     this.shuffleQuestions();
+    this.questions.forEach(question => {
+      question.options = this.shuffleArray(question.options);
+    });
     this.startTimer();
-  }
+  }  
 
   goHome(): void {
     this.navigationService.goHome();
@@ -116,36 +68,17 @@ export class Nivel2InundacionPage implements OnInit {
     }, 1000);
   }
 
-  allowDrop(event: DragEvent) {
-    event.preventDefault();
+  selectAnswer(questionIndex: number, answer: string) {
+    this.answers[questionIndex] = answer;
+    this.selectedOptions[questionIndex] = answer;
   }
 
-  drag(event: DragEvent, word: string) {
-    event.dataTransfer?.setData('text', word);
-  }
-
-  drop(event: DragEvent) {
-    event.preventDefault();
-    const data = event.dataTransfer?.getData('text');
-    const blankId = (event.target as HTMLElement).id;
-    if (data) {
-      this.selectedOptions[blankId] = data;
-      (event.target as HTMLElement).innerText = data;
-    }
+  isSelected(questionIndex: number, answer: string): boolean {
+    return this.selectedOptions[questionIndex] === answer;
   }
 
   calculateScore() {
-    let correctAnswers = 0;
-    this.questions.forEach((question, qIndex) => {
-      question.sentence.forEach((part) => {
-        if (part.blank && part.id !== undefined) {
-          const blankId = 'blank-' + qIndex + '-' + part.id;
-          if (this.selectedOptions[blankId] === question.correct[part.id - 1]) {
-            correctAnswers++;
-          }
-        }
-      });
-    });
+    const correctAnswers = this.questions.filter((q, index) => q.correct === this.answers[index]).length;
     this.score = correctAnswers * this.timer * 40;
   }
 
@@ -155,7 +88,7 @@ export class Nivel2InundacionPage implements OnInit {
     this.navCtrl.navigateForward('/resultado', {
       queryParams: {
         score: this.score,
-        correctAnswers: this.score / (this.timer * 40)
+        correctAnswers: this.answers.filter((answer, index) => answer === this.questions[index].correct).length
       }
     });
   }
@@ -178,4 +111,13 @@ export class Nivel2InundacionPage implements OnInit {
       [this.questions[i], this.questions[j]] = [this.questions[j], this.questions[i]];
     }
   }
+
+  shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  
 }
