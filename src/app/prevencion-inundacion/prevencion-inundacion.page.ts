@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { NavigationService } from '../servicios/navigation.service';
 
 @Component({
@@ -8,6 +8,9 @@ import { NavigationService } from '../servicios/navigation.service';
   styleUrls: ['./prevencion-inundacion.page.scss'],
 })
 export class PrevencionInundacionPage implements OnInit {
+  username: string | null = null;
+  currentUser: any | null = null;
+  isAdmin: boolean = false;
 
   sections = [
     {
@@ -37,16 +40,33 @@ export class PrevencionInundacionPage implements OnInit {
   ];
 
   currentIndex = 0;
-
   title: string = '';
   imageSrc: string = '';
   caption: string = '';
   description: string = '';
 
-  constructor(private navCtrl: NavController, private navigationService: NavigationService) { }
+  constructor(
+    private navCtrl: NavController,
+    private navigationService: NavigationService,
+    private menuCtrl: MenuController
+  ) { }
 
   ngOnInit() {
     this.updateSection();
+    this.updateUserInfo();
+  }
+
+  ionViewWillEnter() {
+    this.updateUserInfo();
+  }
+
+  updateUserInfo() {
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      this.currentUser = JSON.parse(user);
+      this.username = this.currentUser.username;
+      this.isAdmin = Number(this.currentUser.admin) === 1;
+    }
   }
 
   updateSection() {
@@ -66,6 +86,7 @@ export class PrevencionInundacionPage implements OnInit {
   }
 
   navigateToInicioSesion() {
+    this.navigationService.setPreviousUrl('/prevencion-inundacion'); // Guarda la URL actual
     this.navCtrl.navigateForward('/inicio-sesion');
   }
 
@@ -81,5 +102,38 @@ export class PrevencionInundacionPage implements OnInit {
       this.currentIndex--;
       this.updateSection();
     }
+  }
+
+  navigateToRanking() {
+    this.navCtrl.navigateForward('/ranking-global');
+  }
+
+  navigateToAyuda() {
+    this.navCtrl.navigateForward('/ayuda');
+  }
+
+  openMenu() {
+    this.menuCtrl.enable(true, 'custom-menu');
+    this.menuCtrl.open('custom-menu');
+  }
+
+  editarPerfil() {
+    this.navCtrl.navigateForward('/editar-perfil');
+  }
+
+  cambiarContrasena() {
+    this.navCtrl.navigateForward('/cambiar-contrasena');
+  }
+
+  configuracionAdmin() {
+    this.navCtrl.navigateForward('/administracion');
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.username = null;
+    this.isAdmin = false;
+    this.updateUserInfo();
+    this.menuCtrl.close();
   }
 }
