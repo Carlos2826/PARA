@@ -49,7 +49,7 @@ h1 {
   font-size: 1.2rem;
   display: flex;
   align-items: center;
-  justify-content: center; /* Centra el texto */
+  justify-content: center;
   text-align: center;
   cursor: pointer; /* Asegúrate de que el cursor cambie a una mano en hover */
 }
@@ -148,4 +148,31 @@ ion-header {
     width: 30px;
     height: auto;
   }
+}
+
+.black-toolbar {
+  --background: #000 !important;
+  --color: #fff !important;
+}
+
+ion-menu {
+  --width: 25%; /* Ajuste el ancho del menú */
+}
+
+ion-content {
+  --background: #fff;
+}
+
+ion-item {
+  --background: #f9f9f9;
+  --color: #000;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 40px;
+  --border-radius: 8px;
+  margin: 8px 0;
+}
+
+ion-item[button] {
+  cursor: pointer;
 }

@@ -11,7 +11,7 @@ export class RegistroPage {
   nombre: string = '';
   apellido: string = '';
   nombreUsuario: string = '';
-  contrasena: string = '';
+  password: string = '';  // Cambiado a password
   isAlertOpen: boolean = false;
   alertMessage: string = '';
   isConfirmOpen: boolean = false;
@@ -29,7 +29,7 @@ export class RegistroPage {
   }
 
   registrar() {
-    if (!this.nombre || !this.apellido || !this.nombreUsuario || !this.contrasena) {
+    if (!this.nombre || !this.apellido || !this.nombreUsuario || !this.password) {
       this.alertMessage = 'Todos los campos son obligatorios.';
       this.isAlertOpen = true;
     } else {
@@ -64,7 +64,7 @@ export class RegistroPage {
   registrarUsuario() {
     const newUser = {
       username: this.nombreUsuario,
-      password: this.contrasena,
+      password: this.password,  // Cambiado a password
       nombre: this.nombre,
       apellido: this.apellido
     };
@@ -84,7 +84,7 @@ export class RegistroPage {
     })
     .then(data => {
       alert('Registro exitoso.');
-      this.navCtrl.navigateBack(this.navigationService.getPreviousUrl());
+      this.navCtrl.back();  // Navega a la pantalla anterior
     })
     .catch(error => {
       console.error('Error al registrar el usuario:', error);

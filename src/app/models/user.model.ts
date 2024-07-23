@@ -1,8 +1,10 @@
 export interface User {
-  ID: number;
-  username: string;
-  password?: string;
-  nombre?: string;
-  apellido?: string;
-  admin: boolean;  // Asegúrate de que esto esté presente y sea del tipo correcto
+  ID_Usuario: number;
+  Nombre: string;
+  Apellido: string;
+  Usuario: string;
+  Password: string; // Asegúrate de que esta línea esté presente
+  Admin: number;
+  selected?: boolean; // Añadimos esta propiedad opcionalmente
 }
+
