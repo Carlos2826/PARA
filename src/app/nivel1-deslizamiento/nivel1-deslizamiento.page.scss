@@ -158,10 +158,43 @@ ion-button.selected {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 10%;
+  height: 5%;
   background: #000;
 }
 
+ion-header {
+  ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0%;
+  }
+
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  img.logo {
+    width: 6.5%;
+    height: 6.5%;
+    margin-left: 43%;
+  }
+
+  ion-title {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-right: 30%;
+  }
+
+  .icon, .back-icon {
+    width: 30px;
+    height: auto;
+  }
+}
 
 .footer-toolbar {
   --background: #000; /* Cambia el color del fondo del footer a negro */

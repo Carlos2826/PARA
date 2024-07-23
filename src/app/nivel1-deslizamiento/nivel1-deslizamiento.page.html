@@ -1,17 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="black-toolbar">
+<ion-header>
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
         <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
       </ion-button>
     </ion-buttons>
     <div class="title-container">
-      <div class="logo-title-box">
-        <img src="assets/img/logo.png" alt="Logo" class="logo" (click)="goHome()" />
-        <ion-title>
-          Preparación Ante Riesgo<br>y Amenazas
-        </ion-title>
-      </div>
+      <img src="assets/img/logo.png" alt="Logo" class="logo" (click)="goHome()" />
+      <ion-title>
+        Preparación Ante Riesgo<br>y Amenazas
+      </ion-title>
     </div>
     <ion-buttons slot="end">
       <ion-button (click)="navigateToInicioSesion()">
@@ -34,7 +32,7 @@
     <div class="question-container" *ngFor="let question of questions; let i = index">
       <div *ngIf="currentIndex === i">
         <div class="section section-1">
-          <img src="assets/img/your-image.png" alt="Centered Image" class="centered-image">
+          <img src="assets/img/desliz-tierra.png" alt="Centered Image" class="centered-image">
         </div>
         <div class="section section-2">
           <p class="centered-text">{{ question.text }}</p>
@@ -62,5 +60,10 @@
       <img src="assets/img/flecha derecha-finalizar.png" alt="Finalizar" class="nav-icon">
     </div>
   </div>
-  <div class="footer-bar"></div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-footer>
