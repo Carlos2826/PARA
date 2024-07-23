@@ -19,7 +19,7 @@
 h1 {
   position: relative;
   font-size: 2rem;
-  margin-top: 2%;
+  margin-top: 1%;
   z-index: 1;
   color: #000;
 }
@@ -45,7 +45,7 @@ h1 {
   --padding-top: 1%;
   --padding-bottom: 1%;
   --inner-padding: 1%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: none !important;
   font-size: 1.2rem;
   display: flex;
   align-items: center;
