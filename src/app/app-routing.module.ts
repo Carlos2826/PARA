@@ -146,7 +146,8 @@ const routes: Routes = [
   {
     path: 'cambiar-contrasena',
     loadChildren: () => import('./cambiar-contrasena/cambiar-contrasena.module').then(m => m.CambiarContrasenaPageModule)
-  },  {
+  },
+  {
     path: 'resultado',
     loadChildren: () => import('./resultado/resultado.module').then( m => m.ResultadoPageModule)
   }
@@ -160,4 +161,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
