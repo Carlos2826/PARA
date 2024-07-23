@@ -14,25 +14,25 @@ export class PrevencionDeslizamientoPage implements OnInit {
       title: 'Evaluación del riesgo',
       imageSrc: 'assets/img/evaluacion.jpg',
       caption: 'Evaluación del riesgo',
-      description: 'Identificar áreas propensas a deslizamientos de tierra.'
+      description: 'Identificar áreas propensas a deslizamientos de tierra es fundamental para la prevención. Utiliza mapas de riesgos y tecnología avanzada para evaluar el terreno. Comprender estos riesgos permite tomar medidas preventivas y reducir el impacto de los desastres naturales en la comunidad.'
     },
     {
       title: 'Construcción segura',
       imageSrc: 'assets/img/construccion.jpg',
       caption: 'Construcción segura',
-      description: 'Métodos de construcción y modificaciones para reducir el riesgo.'
+      description: 'Implementar métodos de construcción y modificaciones adecuadas puede reducir significativamente el riesgo de desastres. Utiliza materiales resistentes y técnicas de ingeniería adaptadas al terreno. La planificación y construcción segura protegen las edificaciones y garantizan la seguridad de los habitantes.'
     },
     {
       title: 'Drenaje adecuado',
       imageSrc: 'assets/img/sistema.jpg',
       caption: 'Drenaje adecuado',
-      description: 'Importancia de sistemas de drenaje para evitar la saturación del suelo.'
+      description: 'Tener un sistema de drenaje adecuado es esencial para prevenir la saturación del suelo y reducir el riesgo de inundaciones. Asegúrate de mantener los desagües limpios y en buen estado. Implementar sistemas de drenaje eficientes protege las estructuras y mantiene segura tu comunidad.'
     },
     {
       title: 'Vegetación adecuada',
       imageSrc: 'assets/img/vegetacion.jpg',
       caption: 'Vegetación adecuada',
-      description: 'Plantación de árboles y vegetación para estabilizar el suelo.'
+      description: 'La plantación de árboles y vegetación es crucial para estabilizar el suelo y prevenir deslizamientos. Las raíces de las plantas ayudan a mantener la integridad del terreno, reduciendo la erosión y mejorando la resistencia natural del suelo. Implementar una vegetación adecuada es una medida efectiva para la protección ambiental y la seguridad.'
     }
   ];
 

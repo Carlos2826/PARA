@@ -14,25 +14,25 @@ export class DecisionDuranteDeslizamientoPage implements OnInit {
       title: 'Evacuación inmediata',
       imageSrc: 'assets/img/evacuacion in.jpg',
       caption: 'Evacuación inmediata',
-      description: 'Cómo evacuar rápidamente y hacia dónde dirigirse.'
+      description: 'Saber cómo evacuar rápidamente y hacia dónde dirigirse puede salvar vidas en una emergencia. Identifica las rutas de evacuación más seguras y sigue las instrucciones de las autoridades. Mantén la calma y actúa con rapidez para llegar a un lugar seguro.'
     },
     {
       title: 'Identificación de señales',
       imageSrc: 'assets/img/id señales.jpg',
       caption: 'Identificación de señales',
-      description: 'Identificar señales inmediatas de un deslizamiento de tierra (sonidos, movimientos del suelo).'
+      description: 'Es crucial identificar señales inmediatas de un deslizamiento de tierra, como sonidos inusuales y movimientos del suelo. Presta atención a grietas nuevas en el terreno y cambios repentinos en el paisaje. Reconocer estas señales a tiempo puede permitirte evacuar y buscar un lugar seguro rápidamente.'
     },
     {
       title: 'Refugios seguros',
       imageSrc: 'assets/img/refugio s.jpg',
       caption: 'Refugios seguros',
-      description: 'Identificar lugares seguros en caso de no poder evacuar.'
+      description: 'Es crucial identificar lugares seguros en caso de no poder evacuar. Busca refugios robustos y alejados de zonas de riesgo. Estos lugares deben proporcionar protección y seguridad hasta que sea seguro salir. Mantén un plan claro y comparte esta información con tu familia.'
     },
     {
       title: 'Ayuda a otros',
       imageSrc: 'assets/img/ayuda a otros.jpg',
       caption: 'Ayuda a otros',
-      description: 'Cómo ayudar a otros de manera segura durante la evacuación.'
+      description: 'Durante una evacuación, es fundamental ayudar a otros de manera segura. Prioriza el apoyo a personas con movilidad reducida, niños y ancianos. Coordina con los equipos de rescate y sigue las rutas de evacuación establecidas para asegurar que todos lleguen a un lugar seguro.'
     }
   ];
 
