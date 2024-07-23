@@ -150,8 +150,31 @@ const routes: Routes = [
   {
     path: 'resultado',
     loadChildren: () => import('./resultado/resultado.module').then( m => m.ResultadoPageModule)
+  },
+  {
+    path: 'nivel1-inundacion-c.o',
+    loadChildren: () => import('./nivel1-inundacion-c.o/nivel1-inundacion-c.o.module').then( m => m.Nivel1InundacionCOPageModule)
+  },
+  {
+    path: 'nivel2-inundacion-c.o',
+    loadChildren: () => import('./nivel2-inundacion-c.o/nivel2-inundacion-c.o.module').then( m => m.Nivel2InundacionCOPageModule)
+  },
+  {
+    path: 'nivel3-inundacion-c.o',
+    loadChildren: () => import('./nivel3-inundacion-c.o/nivel3-inundacion-c.o.module').then( m => m.Nivel3InundacionCOPageModule)
+  },
+  {
+    path: 'nivel3-deslizamiento-c.o',
+    loadChildren: () => import('./nivel3-deslizamiento-c.o/nivel3-deslizamiento-c.o.module').then( m => m.Nivel3DeslizamientoCOPageModule)
+  },
+  {
+    path: 'nivel2-deslizamiento-c.o',
+    loadChildren: () => import('./nivel2-deslizamiento-c.o/nivel2-deslizamiento-c.o.module').then( m => m.Nivel2DeslizamientoCOPageModule)
+  },
+  {
+    path: 'nivel1-deslizamiento-c.o',
+    loadChildren: () => import('./nivel1-deslizamiento-c.o/nivel1-deslizamiento-c.o.module').then( m => m.Nivel1DeslizamientoCOPageModule)
   }
-
 ];
 
 @NgModule({
