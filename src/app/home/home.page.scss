@@ -60,7 +60,7 @@
   --padding-top: 2%;
   --padding-bottom: 2%;
   --inner-padding: 2%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: none !important;
   font-size: 1.5rem;
   animation: slideInLeft 1s ease-in-out;
   animation-delay: var(--animation-delay);
