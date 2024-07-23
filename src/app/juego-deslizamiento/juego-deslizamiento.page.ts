@@ -9,6 +9,21 @@ import { NavigationService } from '../servicios/navigation.service';
 })
 export class JuegoDeslizamientoPage implements OnInit {
 
+  games = [
+    {
+      type: 'Opcion Multiple',
+      levels: [1, 2, 3]
+    },
+    {
+      type: 'Completar la Oracion',
+      levels: [1, 2, 3]
+    },
+    {
+      type: 'Point and click',
+      levels: [1, 2, 3]
+    }
+  ];
+
   constructor(private navCtrl: NavController, private navigationService: NavigationService) { }
 
   ngOnInit() {
@@ -25,6 +40,7 @@ export class JuegoDeslizamientoPage implements OnInit {
   navigateToInicioSesion(): void {
     this.navCtrl.navigateForward('/inicio-sesion');
   }
+
   navigateToJuegoDeslizamiento(nivel: number): void {
     const targetPage = `/nivel${nivel}-deslizamiento`;
     this.triggerTransition('tierra-transition', targetPage);
@@ -39,6 +55,6 @@ export class JuegoDeslizamientoPage implements OnInit {
       this.navCtrl.navigateForward(targetPage).then(() => {
         document.body.removeChild(transitionElement);
       });
-    }, 2000); 
+    }, 2000);
   }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 import { Nivel2DeslizamientoPage } from './nivel2-deslizamiento.page';
 
 const routes: Routes = [

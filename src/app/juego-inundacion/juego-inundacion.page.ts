@@ -11,16 +11,16 @@ export class JuegoInundacionPage implements OnInit {
 
   games = [
     {
-      type: 'Opcion Multiple',
+      type: 'Opción Múltiple',
       levels: [1, 2, 3]
     },
     {
-      type: 'Completar la Oracion',
-      levels: [1, 2, 3]
+      type: 'Completar la Oración',
+      levels: [4, 5, 6]
     },
     {
-      type: 'Point and click',
-      levels: [1, 2, 3]
+      type: 'Point and Click',
+      levels: [7, 8, 9]
     }
   ];
 

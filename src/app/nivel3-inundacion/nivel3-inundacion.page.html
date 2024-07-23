@@ -1,13 +1,47 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Nivel3Inundacion</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
+      </ion-button>
+    </ion-buttons>
+    <div class="title-container">
+      <img src="assets/img/logo.png" alt="Logo" class="logo" (click)="goHome()" />
+      <ion-title>
+        Preparación Ante Riesgo<br>y Amenazas
+      </ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToInicioSesion()">
+        <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ranking.png" alt="Ranking" class="icon">
+      </ion-button>
+      <ion-button>
+        <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Nivel3Inundacion</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="results-container">
+    <img src="assets/img/fondo.jpg" class="background-image" />
+    <h1 class="titulo-result">Resultados</h1>
+    <div class="characters">
+      <img src="assets/img/rana fondo.png" class="character aqua" />
+    </div>
+    <img src="assets/img/bien.png" alt="Resultado" class="result-image" />
+    <p class="result-text">¡Bien hecho! Aquí están tus resultados:</p>
+    <div class="button-container">
+      <ion-button expand="block" (click)="navigateToNivel2Inundacion()" class="opc-button" >Siguiente Nivel</ion-button>
+      <ion-button expand="block" (click)="goHome()" class="opc-button" >Home</ion-button>
+      <ion-button expand="block" (click)="navigateToSeleccionJuegoPage()" class="opc-button" >Selección de Juego</ion-button>
+    </div>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar></ion-toolbar>
+</ion-footer>

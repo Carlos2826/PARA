@@ -5,13 +5,11 @@
         <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
       </ion-button>
     </ion-buttons>
-    <div class="header-container">
-      <div class="logo-title-container">
-        <img src="assets/img/logo.png" alt="Logo" class="logo" />
-        <ion-title>
-          Preparación Ante Riesgo<br>y Amenazas
-        </ion-title>
-      </div>
+    <div class="title-container">
+      <img src="assets/img/logo.png" alt="Logo" class="logo" (click)="goHome()" />
+      <ion-title>
+        Preparación Ante Riesgo<br>y Amenazas
+      </ion-title>
     </div>
     <ion-buttons slot="end">
       <ion-button (click)="navigateToInicioSesion()">
@@ -30,40 +28,60 @@
 <ion-content>
   <div class="level-selection-container">
     <img src="assets/img/fondo.jpg" class="background-image" />
-    <h1>Selección de Nivel</h1>
     <div class="characters">
       <img src="assets/img/armadillo fondo.png" class="character terra" />
-    </div>
-    <div class="level-box">
-      <div class="level-grid">
-        <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(1)">
-          <img src="assets/img/lv-1-t.png" />
-        </ion-button>
-        <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(2)">
-          <img src="assets/img/lv-2-t.png" />
-        </ion-button>
-        <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(3)">
-          <img src="assets/img/lv-3-t.png" />
-        </ion-button>
-        <ion-button class="level-button">
-          <img src="assets/img/lv-blq-t.png" />
-        </ion-button>
-        <ion-button class="level-button">
-          <img src="assets/img/lv-blq-t.png" />
-        </ion-button>
-        <ion-button class="level-button">
-          <img src="assets/img/lv-blq-t.png" />
-        </ion-button>
-        <ion-button class="level-button">
-          <img src="assets/img/lv-blq-t.png" />
-        </ion-button>
-        <ion-button class="level-button">
-          <img src="assets/img/lv-blq-t.png" />
-        </ion-button>
-        <ion-button class="level-button">
-          <img src="assets/img/lv-blq-t.png" />
-        </ion-button>
+    <h1>Selección de Juego</h1>
+    <div class="game-box">
+      <div class="game-option">
+        <div class="game-type">Opción Múltiple</div>
+        <div class="levels">
+          <div class="level-container">
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(1)">
+              <img src="assets/img/lv-1-t.png" />
+            </ion-button>
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(2)">
+              <img src="assets/img/lv-2-t.png" />
+            </ion-button>
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(3)">
+              <img src="assets/img/lv-3-t.png" />
+            </ion-button>
+          </div>
+        </div>
       </div>
+      <div class="game-option">
+        <div class="game-type">Completar la Oración</div>
+        <div class="characters"></div>
+        <div class="levels">
+          <div class="level-container">
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(4)">
+              <img src="assets/img/lv-1-t.png" />
+            </ion-button>
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(5)">
+              <img src="assets/img/lv-2-t.png" />
+            </ion-button>
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(6)">
+              <img src="assets/img/lv-3-t.png" />
+            </ion-button>
+          </div>
+        </div>
+      </div>
+      <div class="game-option">
+        <div class="game-type">Point and Click</div>
+        <div class="levels">
+          <div class="level-container">
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(7)">
+              <img src="assets/img/lv-1-t.png" />
+            </ion-button>
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(8)">
+              <img src="assets/img/lv-2-t.png" />
+            </ion-button>
+            <ion-button class="level-button" (click)="navigateToJuegoDeslizamiento(9)">
+              <img src="assets/img/lv-3-t.png" />
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </ion-content>

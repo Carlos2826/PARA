@@ -28,41 +28,44 @@
 </ion-header>
 
 <ion-content>
-  <img src="assets/img/fondo.jpg" class="background-image" />
-  <p class="centered-text">Tu texto aquí</p>
-  <div class="section section-1">
-    
-    <img src="assets/img/your-image.png" alt="Centered Image" class="centered-image">
-  </div>
-  <div class="section section-2">
-    <p class="centered-text">Pregunta sobre la imagen</p>
-    
-  </div>
-  <div class="section section-3">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-button expand="block">Respuesta 1</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button expand="block">Respuesta 2</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button expand="block">Respuesta 3</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button expand="block">Respuesta 4</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <div class="quiz-container">
+    <img src="assets/img/fondo.jpg" class="background-image" />
+    <div class="timer">Tiempo restante: {{ timer }} segundos</div>
+    <div class="question-container" *ngFor="let question of questions; let i = index">
+      <div *ngIf="currentIndex === i">
+        <div class="section section-1">
+          <img src="assets/img/your-image.png" alt="Centered Image" class="centered-image">
+        </div>
+        <div class="section section-2">
+          <p class="centered-text">{{ question.text }}</p>
+        </div>
+        <div class="section section-3">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" *ngFor="let option of question.options">
+                <ion-button expand="block" [class.selected]="isSelected(i, option)" (click)="selectAnswer(i, option)">{{ option }}</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación del carrusel -->
+    <div *ngIf="currentIndex > 0" class="carousel-nav left" (click)="prevSection()">
+      <img src="assets/img/flecha izquierda.png" alt="Anterior" class="nav-icon">
+    </div>
+    <div *ngIf="currentIndex < questions.length - 1" class="carousel-nav right" (click)="nextSection()">
+      <img src="assets/img/flecha derecha.png" alt="Siguiente" class="nav-icon">
+    </div>
+    <div *ngIf="currentIndex === questions.length - 1" class="carousel-nav right" (click)="finishQuiz()">
+      <img src="assets/img/flecha derecha-finalizar.png" alt="Finalizar" class="nav-icon">
+    </div>
   </div>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-title>Footer</ion-title>
+  <ion-toolbar class="footer-toolbar">
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-footer>
-
