@@ -39,7 +39,7 @@
       <p>Puntuación: {{ score }}</p>
     </div>
     <div class="button-container">
-      <ion-button expand="block" (click)="navigateToNivel2Inundacion()" class="opc-button">Siguiente Nivel</ion-button>
+      <ion-button *ngIf="shouldShowNextLevelButton()" expand="block" (click)="navigateToNextLevel()" class="opc-button">Siguiente Nivel</ion-button>
       <ion-button expand="block" (click)="goHome()" class="opc-button">Home</ion-button>
       <ion-button expand="block" (click)="navigateToSeleccionJuegoPage()" class="opc-button">Selección de Juego</ion-button>
     </div>

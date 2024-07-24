@@ -155,10 +155,12 @@ export class Nivel3DeslizamientoCOPage implements OnInit {
     this.navCtrl.navigateForward('/resultado', {
       queryParams: {
         score: this.score,
-        correctAnswers: this.score / (this.timer * 40)
+        correctAnswers: this.score / (this.timer * 40),
+        level: 3,
+        gameType: 'deslizamiento-co'
       }
     });
-  }
+  }  
 
   nextSection() {
     if (this.currentIndex < this.questions.length - 1) {

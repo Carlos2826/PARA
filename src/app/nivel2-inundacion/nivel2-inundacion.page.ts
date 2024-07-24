@@ -88,10 +88,12 @@ export class Nivel2InundacionPage implements OnInit {
     this.navCtrl.navigateForward('/resultado', {
       queryParams: {
         score: this.score,
-        correctAnswers: this.answers.filter((answer, index) => answer === this.questions[index].correct).length
+        correctAnswers: this.answers.filter((answer, index) => answer === this.questions[index].correct).length,
+        level: 2,
+        gameType: 'inundacion'
       }
     });
-  }
+  }  
 
   nextSection() {
     if (this.currentIndex < this.questions.length - 1) {
