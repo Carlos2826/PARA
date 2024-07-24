@@ -87,10 +87,12 @@ export class Nivel1DeslizamientoPage implements OnInit {
     this.navCtrl.navigateForward('/resultado', {
       queryParams: {
         score: this.score,
-        correctAnswers: this.answers.filter((answer, index) => answer === this.questions[index].correct).length
+        correctAnswers: this.answers.filter((answer, index) => answer === this.questions[index].correct).length,
+        level: 1,
+        gameType: 'deslizamiento'
       }
     });
-  }
+  }  
 
   nextSection() {
     if (this.currentIndex < this.questions.length - 1) {

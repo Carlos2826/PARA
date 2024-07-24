@@ -1,154 +1,184 @@
+ion-header {
+  ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+  }
+
+  .title-centered {
+    text-align: center;
+    flex: 1;
+  }
+}
+
+.ranking-header-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 20px;
+}
+
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  width: 60px; /* Ajusta el tamaño del logo según sea necesario */
+  height: auto;
+  margin-right: 10px;
+}
+
+.ranking-header {
+  display: flex;
+  align-items: center;
+}
+
+.ranking-header h1 {
+  margin-right: 10px;
+  font-size: 1.5rem; /* Ajusta el tamaño del texto según sea necesario */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background-color: #fff;
+  color: #000;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px; /* Separación entre el botón y el menú */
+}
+
+.menu-icon {
+  width: 20px; /* Ajusta el tamaño del icono según sea necesario */
+  margin-right: 5px;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  display: block;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+}
+
+.dropdown-content button.selected {
+  background-color: rgba(204, 204, 204, 0.5); /* Fondo gris con 50% de transparencia */
+}
+
+.dropdown-content button:hover {
+  background-color: #ddd;
+}
+
+.clear-btn {
+  background-color: #6c757d;
+  color: #fff;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.clear-btn:hover {
+  background-color: #5a6268;
+}
+
 .ranking-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    overflow: hidden;
-    padding: 20px;
-  }
-  
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  .title-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 20px;
-  }
-  
-  .logo {
-    width: 10%;
-    height: 10%;
-    margin-right: 10px;
-  }
-  
-  .title-text h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #000;
-  }
-  
-  .title-text h3 {
-    margin: 0;
-    font-size: 1rem;
-    color: #000;
-  }
-  
-  .ranking-table {
-    margin-top: 20px;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;
-  }
-  
-  .ranking-table th, .ranking-table td {
-    border: 2px solid #000; /* Grosor del borde aumentado */
-    padding: 10px;
-    text-align: center;
-    color: #000; /* Color del texto cambiado a negro */
-  }
-  
-  .ranking-table th {
-    background-color: #ddd;
-  }
-  
-  .footer-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5%;
-    background: #000;
-  }
-  
-  .black-toolbar {
-    --background: #000 !important;
-    --color: #fff !important;
-  }
-  
-  .title-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  img.logo {
-    width: 50px;
-    height: 50px;
-    margin-left: 10px;
-  }
-  
-  ion-title {
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin-right: 30px;
-  }
-  
-  .icon, .back-icon {
-    width: 30px;
-    height: auto;
-  }
-  
-  .ranking-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    overflow: hidden;
-  }
-  
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  .title-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .title-text {
-    margin-left: 20px;
-  }
-  
-  .buttons-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-    gap: 10px;
-  }
-  
-  .buttons-container ion-button {
-    --padding-top: 0.5em;
-    --padding-bottom: 0.5em;
-    --padding-start: 1em;
-    --padding-end: 1em;
-  }
-  
-  ion-list {
-    margin: 20px;
-  }
-  
-  ion-item h2, ion-item p {
-    margin: 0;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.ranking-table-container {
+  width: 80%; /* Ajusta el ancho según sea necesario */
+  max-width: 800px; /* Ajusta el ancho máximo según sea necesario */
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo con 50% de transparencia */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interior */
+}
+
+.ranking-table-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ranking-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table-container th, .ranking-table-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.ranking-table-container th {
+  background-color: #f2f2f2;
+}
+
+.user-row {
+  background-color: rgba(204, 204, 204, 0.5); /* Fondo gris con 50% de transparencia */
+}
+
+.no-selection {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 15px;
+  background-color: rgba(202, 202, 202, 0.3);
+  width: 80%;
+  max-width: 600px;
+}
+
+.no-selection p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Ajustes para el botón de retroceso */
+ion-button.back-button {
+  width: 40px; /* Ajusta el tamaño del botón según sea necesario */
+  height: 40px; /* Ajusta el tamaño del botón según sea necesario */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-icon {
+  width: 20px; /* Ajusta el tamaño del icono según sea necesario */
+  height: auto;
+}

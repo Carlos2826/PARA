@@ -155,10 +155,12 @@ export class Nivel3DeslizamientoCOPage implements OnInit {
     this.navCtrl.navigateForward('/resultado', {
       queryParams: {
         score: this.score,
-        correctAnswers: this.score / (this.timer * 40)
+        correctAnswers: this.score / (this.timer * 40),
+        level: 3,
+        gameType: 'deslizamiento-co'
       }
     });
-  }
+  }  
 
   nextSection() {
     if (this.currentIndex < this.questions.length - 1) {
@@ -173,7 +175,7 @@ export class Nivel3DeslizamientoCOPage implements OnInit {
   }
 
   shuffleQuestions() {
-    for (let i = this.questions.length - 1; i > 0;) {
+    for (let i = this.questions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [this.questions[i], this.questions[j]] = [this.questions[j], this.questions[i]];
     }

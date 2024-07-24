@@ -1,63 +1,72 @@
 <ion-header>
   <ion-toolbar class="black-toolbar">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()">
+      <ion-button class="back-button" (click)="goBack()">
         <img src="assets/img/retroceso.png" alt="Back" class="back-icon" />
       </ion-button>
     </ion-buttons>
-    <ion-title>
-      Preparación Ante Riesgo<br>y Amenazas
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="navigateToInicioSesion()">
-        <img src="assets/img/icono de usuario.png" alt="Usuario" class="icon">
-      </ion-button>
-      <ion-button>
-        <img src="assets/img/icono de ayuda.png" alt="Ayuda" class="icon">
-      </ion-button>
-    </ion-buttons>
+    <div class="title-centered">
+      <ion-title>Preparación Ante Riesgo y Amenazas</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ranking-container">
-    <img src="assets/img/fondo.jpg" class="background-image" />
-    <div class="title-box">
-      <img src="assets/img/logo.png" alt="Logo" class="logo"/>
-      <div class="title-text">
-        <h2>{{ title }}</h2>
-        <h3>{{ subtitle }}</h3>
+  <div class="ranking-header-container">
+    <div class="logo-title-container">
+      <img src="assets/img/logo.png" alt="Logo" class="logo" />
+      <div class="ranking-header">
+        <h1>Ranking</h1>
+        <div class="dropdown">
+          <button class="dropdown-btn" (click)="toggleDropdown()">
+            <img src="assets/img/menu-ranking.png" alt="Menu Ranking" class="menu-icon" />
+            <span>
+              {{ selectedCategory ? selectedCategory + (selectedSubcategory ? ' / ' + selectedSubcategory : '') : 'Seleccione una categoría' }}
+            </span>
+          </button>
+          <div class="dropdown-content" *ngIf="dropdownOpen">
+            <div *ngIf="!selectedCategory">
+              <button *ngFor="let category of categories" 
+                      [class.selected]="category === selectedCategory" 
+                      (click)="selectCategory(category)">
+                {{ category }}
+              </button>
+            </div>
+            <div *ngIf="selectedCategory">
+              <button *ngFor="let subcategory of subcategories" (click)="selectSubcategory(subcategory)">
+                {{ subcategory }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <button class="clear-btn" (click)="clearSelection()">Limpiar</button>
       </div>
     </div>
-    <table class="ranking-table">
-      <thead>
+  </div>
+  <div class="ranking-container">
+    <div class="ranking-table-container" *ngIf="selectedSubcategory">
+      <h2>{{ selectedCategory }} / {{ selectedSubcategory }}</h2>
+      <table>
         <tr>
-          <th>#</th>
+          <th>Posición</th>
           <th>Nombre</th>
           <th>Nivel 1</th>
           <th>Nivel 2</th>
           <th>Nivel 3</th>
           <th>Total</th>
         </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let player of players; let i = index">
+        <tr *ngFor="let rank of ranking; let i = index" [class.user-row]="rank.isUser">
           <td>{{ i + 1 }}</td>
-          <td>{{ player.name }}</td>
-          <td>{{ player.level1 }}</td>
-          <td>{{ player.level2 }}</td>
-          <td>{{ player.level3 }}</td>
-          <td>{{ player.total }}</td>
+          <td>{{ rank.name }}</td>
+          <td>{{ rank.level1 }}</td>
+          <td>{{ rank.level2 }}</td>
+          <td>{{ rank.level3 }}</td>
+          <td>{{ rank.total }}</td>
         </tr>
-      </tbody>
-    </table>
-    <div class="footer-bar"></div>
-    <!-- Navegación del carrusel -->
-    <div *ngIf="currentIndex > 0" class="carousel-nav left" (click)="prevSection()">
-      <img src="assets/img/flecha izquierda.png" alt="Anterior" class="nav-icon">
+      </table>
     </div>
-    <div *ngIf="currentIndex < sections.length - 1" class="carousel-nav right" (click)="nextSection()">
-      <img src="assets/img/flecha derecha.png" alt="Siguiente" class="nav-icon">
+    <div class="no-selection" *ngIf="!selectedSubcategory">
+      <p>Seleccione una tabla</p>
     </div>
   </div>
 </ion-content>
