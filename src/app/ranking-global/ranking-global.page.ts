@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,70 +6,51 @@ import { NavController } from '@ionic/angular';
   templateUrl: './ranking-global.page.html',
   styleUrls: ['./ranking-global.page.scss'],
 })
-export class RankingGlobalPage implements OnInit {
+export class RankingGlobalPage {
+  dropdownOpen = false;
+  selectedCategory: string | null = null;
+  selectedSubcategory: string | null = null;
+  categories: string[] = ['Inundacion', 'Deslizamiento de Tierra'];
+  subcategories: string[] = [];
+  ranking: { name: string; level1: number; level2: number; level3: number; total: number; isUser?: boolean; }[] = [];
 
-  sections = [
-    {
-      title: 'Ranking',
-      subtitle: 'Inundación',
-      players: [
-        { name: 'Otro', level1: 100, level2: 200, level3: 300, total: 600 },
-        { name: 'Otro', level1: 90, level2: 180, level3: 270, total: 540 },
-        { name: 'Otro', level1: 80, level2: 160, level3: 240, total: 480 },
-        { name: 'Otro', level1: 70, level2: 140, level3: 210, total: 420 },
-        { name: 'Tu', level1: 60, level2: 120, level3: 180, total: 360 }
-      ]
-    },
-    {
-      title: 'Ranking',
-      subtitle: 'Deslizamiento de Tierra',
-      players: [
-        { name: 'Otro', level1: 110, level2: 210, level3: 310, total: 630 },
-        { name: 'Otro', level1: 100, level2: 190, level3: 280, total: 570 },
-        { name: 'Otro', level1: 90, level2: 170, level3: 250, total: 510 },
-        { name: 'Otro', level1: 80, level2: 150, level3: 220, total: 450 },
-        { name: 'Tu', level1: 70, level2: 130, level3: 200, total: 400 }
-      ]
-    }
-  ];
+  constructor(private navCtrl: NavController) {
+    // Datos de ejemplo
+    this.ranking = [
+      { name: 'Otro', level1: 0, level2: 0, level3: 0, total: 0 },
+      { name: 'Otro', level1: 0, level2: 0, level3: 0, total: 0 },
+      { name: 'Otro', level1: 0, level2: 0, level3: 0, total: 0 },
+      { name: 'Otro', level1: 0, level2: 0, level3: 0, total: 0 },
+      { name: 'Otro', level1: 0, level2: 0, level3: 0, total: 0 },
+      { name: 'Otro', level1: 0, level2: 0, level3: 0, total: 0 },
+      { name: 'Tu', level1: 0, level2: 0, level3: 0, total: 0, isUser: true },
+    ];
+  }
 
-  currentIndex = 0;
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
 
-  title: string = this.sections[this.currentIndex].title;
-  subtitle: string = this.sections[this.currentIndex].subtitle;
-  players = this.sections[this.currentIndex].players;
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+    this.dropdownOpen = false;
+    this.subcategories = category === 'Inundacion' ? ['Opcion Multiple', 'Completar la Oracion'] : ['Opcion Multiple', 'Completar la Oracion'];
+  }
 
-  constructor(private navCtrl: NavController) { }
+  selectSubcategory(subcategory: string) {
+    this.selectedSubcategory = subcategory;
+    this.dropdownOpen = false;
+    // Aquí podrías cargar los datos del ranking para la subcategoría seleccionada.
+  }
 
-  ngOnInit() { }
+  clearSelection() {
+    this.selectedCategory = null;
+    this.selectedSubcategory = null;
+    this.subcategories = [];
+  }
 
   goBack() {
     this.navCtrl.back();
-  }
-
-  navigateToInicioSesion() {
-    this.navCtrl.navigateForward('/inicio-sesion');
-  }
-
-  nextSection() {
-    if (this.currentIndex < this.sections.length - 1) {
-      this.currentIndex++;
-      this.updateSection();
-    }
-  }
-
-  prevSection() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.updateSection();
-    }
-  }
-
-  updateSection() {
-    const section = this.sections[this.currentIndex];
-    this.title = section.title;
-    this.subtitle = section.subtitle;
-    this.players = section.players;
   }
 }
 
